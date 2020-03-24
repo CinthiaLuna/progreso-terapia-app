@@ -1,0 +1,23 @@
+.page {
+  align-items: center;
+  flex-direction: column;
+}
+.titulo {
+  color: #333333;
+  font-size: 30px;
+  font-weight: bold;
+  align-items: center;
+}
+.form {
+  margin-left: 30;
+  margin-right: 30;
+  flex-grow: 2;
+  vertical-align: middle;
+}
+.input-field {
+  margin-bottom: 25;
+}
+.boton-login {
+  background: #333333;
+  color: #ffffff;
+}
