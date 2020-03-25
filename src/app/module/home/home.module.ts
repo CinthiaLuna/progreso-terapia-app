@@ -2,6 +2,9 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { HomeComponent } from "./home.component";
 import { MenuPrincipalComponent } from "./menu-principal/menu-principal.component";
+import { HomeRoutingModule } from "./home-routing.module";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -10,7 +13,7 @@ import { MenuPrincipalComponent } from "./menu-principal/menu-principal.componen
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
-    imports: [NativeScriptModule],
+    imports: [NativeScriptModule, HomeRoutingModule, NativeScriptUISideDrawerModule, NativeScriptCommonModule],
     declarations: [HomeComponent, MenuPrincipalComponent],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]

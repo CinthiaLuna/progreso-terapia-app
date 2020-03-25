@@ -3,12 +3,18 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
 @Component({
-    moduleId: module.id,
+    selector: "home",
     templateUrl: "./home.component.html",
     styleUrls: ["./home.component.css"]
 })
 export class HomeComponent {
-    mostrarMenu(): void {
+
+    constructor() { }
+
+    ngOnInit(): void {
+    }
+
+    onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }

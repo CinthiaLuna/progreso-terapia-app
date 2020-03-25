@@ -7,8 +7,11 @@
 .fondo {
   opacity: 0.5;
   background-image: url("res://fondo_principal");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .contenido {
+  opacity: 0.8;
   border-radius: 8;
   margin-top: 80;
   margin-bottom: 80;
