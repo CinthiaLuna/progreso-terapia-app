@@ -1,18 +1,21 @@
-.page {
-  align-items: center;
-  flex-direction: column;
+.pagina {
+  background-image: url("res://fondo_principal2");
 }
 .titulo {
   color: #333333;
+  margin-left: 70;
   font-size: 30px;
   font-weight: bold;
-  align-items: center;
 }
 .form {
+  background-color: #faf4ec;
+  border-radius: 8px;
+  opacity: 0.8;
   margin-left: 30;
   margin-right: 30;
   flex-grow: 2;
   vertical-align: middle;
+  border-style: solid;
 }
 .input-field {
   margin-bottom: 25;

@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 import { LoginComponent } from "./module/auth/login/login.component";
-import { HomeComponent } from "./module/home/home.component.";
+import { HomeComponent } from "./module/home/home.component";
 
 const routes: Routes = [
     { path: "", component: LoginComponent },
@@ -13,4 +13,4 @@ const routes: Routes = [
     imports: [NativeScriptRouterModule.forRoot(routes)],
     exports: [NativeScriptRouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,3 +1,14 @@
-<StackLayout>
-  <Label text="home"></Label>
-</StackLayout>
+<ActionBar title="Pagina principal" class="barra">
+  <NavigationButton ios:visibility="collapsed" icon="res://boton_burger" (tap)="mostrarMenu()"></NavigationButton>
+  <ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="left" (tap)="mostrarMenu()">
+  </ActionItem>
+  <Label text="Pagina principal" class="titulo"> </Label>
+</ActionBar>
+<GridLayout class="fondo">
+  <StackLayout class="contenido">
+    <Label text="BIENVENIDO"></Label>
+    <TextView
+      text="Esta aplicación esta horientada a mostrar el progreso del paciente dentro de la terapia del lenguaje"
+      editable="false"></TextView>
+  </StackLayout>
+</GridLayout>

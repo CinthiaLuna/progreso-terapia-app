@@ -1,20 +1,32 @@
-<StackLayout class="form">
-  <StackLayout>
-    <Image src="res://logo_app " width="250"></Image>
-    <label class="titulo" text="Bienvenido"></label>
-  </StackLayout>
-  <StackLayout class="input-field">
-    <TextField hint="Usuario"></TextField>
-  </StackLayout>
+<GridLayout class="pagina">
+  <StackLayout class="form">
+    <StackLayout>
+      <Image src="res://logo_app " width="250"></Image>
+      <label class="titulo" text="Bienvenido"></label>
+    </StackLayout>
+    <StackLayout class="input-field">
+      <TextField hint="Usuario"></TextField>
+    </StackLayout>
 
-  <StackLayout class="input-field">
-    <TextField hint="Contraseña"></TextField>
-  </StackLayout>
+    <StackLayout class="input-field">
+      <TextField hint="Contraseña"></TextField>
+    </StackLayout>
 
-  <Button
-    (tap)="login()"
-    text="Iniciar sesión"
-    class="boton-login"
-    type="button"
-  ></Button>
-</StackLayout>
+    <Button (tap)="login()" text="Iniciar sesión" class="boton-login" type="button"></Button>
+  </StackLayout>
+  <StackLayout class="form">
+    <StackLayout>
+      <Image src="res://logo_app " width="250"></Image>
+      <label class="titulo" text="Bienvenido"></label>
+    </StackLayout>
+    <StackLayout class="input-field">
+      <TextField hint="Usuario"></TextField>
+    </StackLayout>
+
+    <StackLayout class="input-field">
+      <TextField hint="Contraseña"></TextField>
+    </StackLayout>
+
+    <Button (tap)="login()" text="Iniciar sesión" class="boton-login" type="button"></Button>
+  </StackLayout>
+</GridLayout>
