@@ -1,0 +1,14 @@
+<ActionBar title="Pagina principal" class="barra">
+    <NavigationButton ios:visibility="collapsed" icon="res://boton_burger" (tap)="onDrawerButtonTap()">
+    </NavigationButton>
+    <ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="left"
+        (tap)="onDrawerButtonTap()">
+    </ActionItem>
+    <Label text="Pagina principal" class="titulo"> </Label>
+</ActionBar>
+<GridLayout class="fondo">
+    <StackLayout class="contenido">
+        <Label text="BIENVENIDO"></Label>
+        <TextView text="Esta aplicacion muestra" editable="false"></TextView>
+    </StackLayout>
+</GridLayout>

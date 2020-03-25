@@ -1,7 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { HomeComponent } from "./home.component";
-import { MenuPrincipalComponent } from "./menu-principal/menu-principal.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
@@ -13,8 +12,8 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
-    imports: [NativeScriptModule, HomeRoutingModule, NativeScriptUISideDrawerModule, NativeScriptCommonModule],
-    declarations: [HomeComponent, MenuPrincipalComponent],
+    imports: [HomeRoutingModule, NativeScriptUISideDrawerModule, NativeScriptCommonModule],
+    declarations: [HomeComponent],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]
 })

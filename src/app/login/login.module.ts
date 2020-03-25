@@ -1,8 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { LoginComponent } from "./login.component";
+import { LoginRoutingModule } from "./login-routing.module";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -10,14 +9,15 @@ import { AppComponent } from "./app.component";
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
+
 @NgModule({
-    bootstrap: [AppComponent],
-    imports: [NativeScriptModule, AppRoutingModule, NativeScriptUISideDrawerModule],
-    declarations: [AppComponent],
-    providers: [],
+    imports: [
+        NativeScriptRouterModule, LoginRoutingModule
+    ],
+    declarations: [LoginComponent],
     schemas: [NO_ERRORS_SCHEMA]
 })
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app
 */
-export class AppModule { }
+export class LoginModule { }
