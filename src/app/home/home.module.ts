@@ -12,7 +12,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
-    imports: [HomeRoutingModule, NativeScriptUISideDrawerModule, NativeScriptCommonModule],
+    imports: [HomeRoutingModule, NativeScriptCommonModule],
     declarations: [HomeComponent],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]

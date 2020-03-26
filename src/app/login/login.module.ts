@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { LoginComponent } from "./login.component";
 import { LoginRoutingModule } from "./login-routing.module";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -12,7 +12,7 @@ import { LoginRoutingModule } from "./login-routing.module";
 
 @NgModule({
     imports: [
-        NativeScriptRouterModule, LoginRoutingModule
+        LoginRoutingModule, NativeScriptCommonModule
     ],
     declarations: [LoginComponent],
     schemas: [NO_ERRORS_SCHEMA]

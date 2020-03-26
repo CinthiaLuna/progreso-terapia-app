@@ -3,7 +3,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
 @Component({
-    selector: "home",
+    selector: "ns-home",
     templateUrl: "./home.component.html",
     styleUrls: ["./home.component.css"]
 })

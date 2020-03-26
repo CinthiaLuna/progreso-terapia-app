@@ -1,2 +1,12 @@
-<!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
-<page-router-outlet></page-router-outlet>
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+    <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
+        <StackLayout row="0" class="nt-drawer__header" style="background-color:#3f3f3f;;">
+            <!--   <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>-->
+            <Label></Label>
+            <Label class="nt-drawer__header-brand" text="User Name"></Label>
+            <Label class="nt-drawer__header-footnote" text="username@mail.com"></Label>
+        </StackLayout>
+    </GridLayout>
+
+    <page-router-outlet tkMainContent></page-router-outlet>
+</RadSideDrawer>

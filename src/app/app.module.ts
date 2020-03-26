@@ -12,7 +12,7 @@ import { AppComponent } from "./app.component";
 
 @NgModule({
     bootstrap: [AppComponent],
-    imports: [NativeScriptModule, AppRoutingModule, NativeScriptUISideDrawerModule],
+    imports: [AppRoutingModule, NativeScriptModule, NativeScriptUISideDrawerModule],
     declarations: [AppComponent],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]
