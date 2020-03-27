@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { ReporteDiagnosticoComponent } from "./reporte-diagnostico.component";
+import { ReporteDiagnosticoRoutingModule } from "./reporte-diagnostico-routing.module";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -10,7 +10,7 @@ import { ReporteDiagnosticoComponent } from "./reporte-diagnostico.component";
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
-    imports: [NativeScriptModule, NativeScriptUISideDrawerModule, NativeScriptUISideDrawerModule],
+    imports: [ReporteDiagnosticoRoutingModule, NativeScriptCommonModule],
     declarations: [ReporteDiagnosticoComponent],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]
