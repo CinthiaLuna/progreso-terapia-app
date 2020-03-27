@@ -6,7 +6,7 @@ selectors and properties you can use to style UI components.
 
 /*
 In many cases you may want to use the NativeScript core theme instead
-of writing your own CSS rules. You can learn more about the 
+of writing your own CSS rules. You can learn more about the
 NativeScript core theme at https://github.com/nativescript/theme
 The imported CSS rules must precede all other types of rules.
 */
@@ -20,6 +20,35 @@ This is where the vast majority of your CSS code goes. */
 The following CSS rule changes the font size of all Buttons that have the
 "-primary" class modifier.
 */
-Button.-primary {
-    font-size: 18;
+button.-primary {
+  font-size: 18;
+}
+.barra {
+  background-color: #333333;
+}
+.titulo {
+  color: #f4f3fa;
+}
+.fondo {
+  opacity: 0.5;
+  background-image: url("res://fondo_principal");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.contenido {
+  opacity: 0.8;
+  font-size: 20;
+  align-content: center;
+  text-align: justify;
+  background-color: #f4f3fa;
+  color: #000000;
+  font-weight: bold;
+}
+.barra-menu {
+  padding-top: 10;
+  padding-bottom: 10;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 20;
+  text-align: center;
 }
