@@ -17,14 +17,15 @@
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/citas')" (tap)="onNavItemTap('/citas')">
-                    <Image imageDrawer class="m-r-10" src="res://reportecitas_icono" width="25" height="25"
-                        verticalAlignment="center">
+                    [class.-selected]="isComponentSelected('/reporte-citas')" (tap)="onNavItemTap('/reporte-citas')">
+                    <Image imageDrawer class="m-r-10" src="res://outline_event_available_black_18" width="25"
+                        height="25" verticalAlignment="center">
                     </Image>
                     <Label col="1" text="Reporte de citas" class="p-r-10"></Label>
                 </GridLayout>
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/progreso')" (tap)="onNavItemTap('/progreso')">
+                    [class.-selected]="isComponentSelected('/progreso-paciente')"
+                    (tap)="onNavItemTap('/progreso-paciente')">
                     <Image imageDrawer class="m-r-10" src="res://progreso_icono" width="25" height="25"
                         verticalAlignment="center">
                     </Image>
@@ -42,11 +43,19 @@
 
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
                     [class.-selected]="isComponentSelected('/notificaciones')" (tap)="onNavItemTap('/notificaciones')">
-                    <Image class="m-r-10 imageDrawer" src="res://notificacion_icono" width="25" height="25"
+                    <Image class="m-r-10 imageDrawer" src="res://outline_notifications_black_18" width="25" height="25"
                         verticalAlignment="center">
                     </Image>
                     <Label col="1" text="Notificaciones" class="p-r-10"></Label>
                 </GridLayout>
+                <GridLayout columns="auto, *" class="nt-drawer__list-item"
+                    [class.-selected]="isComponentSelected('/cerrar-sesion')" (tap)="onNavItemTap('/cerrar-sesion')">
+                    <Image class="m-r-10 imageDrawer" src="res://outline_exit_to_app_black_18" width="25" height="25"
+                        verticalAlignment="center">
+                    </Image>
+                    <Label col="1" text="Cerrar sesión" class="p-r-10"></Label>
+                </GridLayout>
+
 
             </StackLayout>
         </ScrollView>

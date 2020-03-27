@@ -3,11 +3,11 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
 @Component({
-    selector: "ns-reporte-diagnostico",
-    templateUrl: "./reporte-diagnostico.component.html",
-    styleUrls: ["./reporte-diagnostico.component.css"]
+    selector: "ns-terapias",
+    templateUrl: "./terapias.component.html",
+    styleUrls: ["./terapias.component.css"]
 })
-export class ReporteDiagnosticoComponent implements OnInit {
+export class TerapiasComponent implements OnInit {
     ngOnInit(): void {
 
     }
