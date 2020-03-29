@@ -8,51 +8,41 @@
 </ActionBar>
 <GridLayout class="fondo">
 
-    <TabView selectedTabTextColor="blue" tabBackgroundColor="white"
-    tabTextFontSize="16" androidSelectedTabHighlightColor="gray">
-    <StackLayout
-        *tabItem="{title: 'Progreso', iconSource: 'res://progreso', textTransform: 'lowercase'}">
-        <GridLayout rows="*" height="1000px">
-            <RadCartesianChart row="0" style="font-size: 12;">
-                <CategoricalAxis tkCartesianHorizontalAxis></CategoricalAxis>
-                <LinearAxis tkCartesianVerticalAxis></LinearAxis>
-                <BarSeries tkCartesianSeries [items]="citas"
-                    categoryProperty="Citas" valueProperty="Cantidad"></BarSeries>
-            </RadCartesianChart>
-        </GridLayout>
-    </StackLayout>
-    <StackLayout
-        *tabItem="{title: 'Calendario', iconSource: 'res://outline_event_available_black_18', textTransform: 'lowercase'}">
-        <RadCalendar
-        [eventSource]="calendarEvents"
-
-        eventsViewMode="Inline"
-        selectionMode="Single"
-        viewMode="Month"
-        transitionMode="Stack"
-        locale="en-US"
-
-        (dateSelected)="onDateSelected($event)"
-        (dateDeselected)="onDateDeselected($event)"
-        (navigatedToDate)="onNavigatedToDate($event)"
-        (navigatingToDateStarted)="onNavigatingToDateStarted($event)"
-        (viewModeChanged)="onViewModeChanged($event)"
-        ></RadCalendar>
-    </StackLayout>
-    <StackLayout
-        *tabItem="{title: 'Lista de citas', iconSource: 'res://listacitas', textTransform: 'lowercase', tabBackgroundColor: 'red'}">
-       <!-- <ListView [items]="reporteCitas" >
+    <TabView selectedTabTextColor="blue" tabBackgroundColor="white" tabTextFontSize="16"
+        androidSelectedTabHighlightColor="gray">
+        <StackLayout class="contenido"
+            *tabItem="{title: 'Progreso', iconSource: 'res://progreso', textTransform: 'lowercase'}">
+            <GridLayout rows="*" height="1000px">
+                <RadCartesianChart row="0" style="font-size: 12;">
+                    <CategoricalAxis tkCartesianHorizontalAxis></CategoricalAxis>
+                    <LinearAxis tkCartesianVerticalAxis></LinearAxis>
+                    <BarSeries tkCartesianSeries [items]="citas" categoryProperty="Citas" valueProperty="Cantidad">
+                    </BarSeries>
+                </RadCartesianChart>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout
+            *tabItem="{title: 'Calendario', iconSource: 'res://outline_event_available_black_18', textTransform: 'lowercase'}">
+            <RadCalendar [eventSource]="calendarEvents" eventsViewMode="Inline" selectionMode="Single" viewMode="Month"
+                transitionMode="Stack" locale="en-US" (dateSelected)="onDateSelected($event)"
+                (dateDeselected)="onDateDeselected($event)" (navigatedToDate)="onNavigatedToDate($event)"
+                (navigatingToDateStarted)="onNavigatingToDateStarted($event)"
+                (viewModeChanged)="onViewModeChanged($event)"></RadCalendar>
+        </StackLayout>
+        <StackLayout
+            *tabItem="{title: 'Lista de citas', iconSource: 'res://listacitas', textTransform: 'lowercase', tabBackgroundColor: 'red'}">
+            <!-- <ListView [items]="reporteCitas" >
             <ng-template let-item="item">-->
-                <GridLayout columns="80,50,200,50" rows="28,28">
-                    <Label  row="0" col="0" text="14/02/2020"></Label>
-                    <Label row="0" class="lista" col="1" text="LFT18"></Label>
-                     <Label row="0" class="lista" col="2" text="Jose Carlos Huerta Gonzales"></Label>
+            <GridLayout columns="80,50,200,50" rows="28,28">
+                <Label row="0" col="0" text="14/02/2020"></Label>
+                <Label row="0" class="lista" col="1" text="LFT18"></Label>
+                <Label row="0" class="lista" col="2" text="Jose Carlos Huerta Gonzales"></Label>
 
-                     <Label row="1" class="lista" col="1" text="12:00" > </Label>
-                     <Label row="1" class="lista" col="2" text="13:30"></Label>
-                </GridLayout>
-         <!--   </ng-template>
+                <Label row="1" class="lista" col="1" text="12:00"> </Label>
+                <Label row="1" class="lista" col="2" text="13:30"></Label>
+            </GridLayout>
+            <!--   </ng-template>
         </ListView>-->
-    </StackLayout>
-</TabView>
+        </StackLayout>
+    </TabView>
 </GridLayout>
