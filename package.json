@@ -22,6 +22,8 @@
     "@angular/router": "~8.2.0",
     "@nativescript/theme": "~2.3.0",
     "nativescript-angular": "~8.21.0",
+    "nativescript-ui-calendar": "^6.1.0",
+    "nativescript-ui-chart": "^7.1.1",
     "nativescript-ui-sidedrawer": "^8.0.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",

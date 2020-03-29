@@ -8,8 +8,12 @@
 </ActionBar>
 
 <GridLayout class="fondo">
-    <StackLayout class="contenido">
-        <Label text="Terapias"></Label>
-        <TextView text="Esta aplicacion muestra" editable="false"></TextView>
-    </StackLayout>
+   <!-- <ListView [items]="terapias">
+        <ng-template let-terapia="item" let-i="index">-->
+            <GridLayout rows="40,auto" columns="50,*">
+                <Image src="terapia.img"></Image>
+                <Label text="Nombre de la terapia" row="0" col="1"></Label>
+            </GridLayout>
+       <!-- </ng-template>
+    </ListView>-->
 </GridLayout>

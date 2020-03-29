@@ -7,8 +7,23 @@
     <Label text="Progreso paciente" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo">
-    <StackLayout class="contenido">
-        <Label text="Progreso paciente"></Label>
-        <TextView text="progreso paciente" editable="false"></TextView>
-    </StackLayout>
+   <!-- <ListView [items]="progresos" iosEstimatedRowHeight="65">
+        <ng-template let-progreso="item" let-i="index">-->
+            <GridLayout rows="25,25">
+                <Label textWrap="true" row="0">
+                    <FormattedString>
+                        <Span text="Bloque 4"></Span>
+                    </FormattedString>
+                </Label>
+                <Label  row="1">
+                    <FormattedString>
+                        <Span text="Fecha: Del "></Span>
+                        <Span text="2018/08/30"></Span>
+                        <Span text=" al "></Span>
+                        <Span text="2019/10/22"></Span>
+                    </FormattedString>
+                </Label>
+            </GridLayout>
+      <!--  </ng-template>
+    </ListView>-->
 </GridLayout>

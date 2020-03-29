@@ -1,0 +1,26 @@
+.paciente {
+    background-color: #333333;
+    color: white;
+    align-items: center;
+    align-content: center;
+}
+
+.diagnosticoLabel {
+    padding-left: 25;
+}
+
+.title {
+    font-size: 23;
+
+}
+
+.icon{
+    height: 24;
+    width: 80;
+    transition: .3s transform ease-in-out;
+}
+
+.collapse{
+
+    transform: rotate(270deg);
+  }

@@ -7,8 +7,28 @@
     <Label text="Notificaciones" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo">
-    <StackLayout class="contenido">
-        <Label text="Notificaciones"></Label>
-        <TextView text="Notificaciones" editable="false"></TextView>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout orientation="vertical">
+           <GridLayout rows="30, 50,30, 50,30, 50,30, 50,30" columns="20,280, auto">
+
+               <Label textWrap="true" row="1"  col="1" class="titulo" text="Terapias"> </Label>
+               <Switch row="1" col="2"  checked="false" backgroundColor="green"></Switch>
+               <Label row="1" col="1" class="subtitulo" text="Recibe notificaciones diarias para ver vídeos" > </Label>
+
+               <Label textWrap="true" row="3" col="1" class="titulo" text="Progreso del paciente"> </Label>
+               <Switch row="3" col="2" checked="false" backgroundColor="green"></Switch>
+               <Label class="subtitulo" row="3" col="1" text="Recibe notificaciones al recibir el avance"> </Label>
+
+               <Label textWrap="true" row="5" col="1" class="titulo" text="Citas" > </Label>
+               <Switch row="5" col="2" checked="false" backgroundColor="green"></Switch>
+               <Label  row="5" col="1" class="subtitulo" text="Recibe más de una notificación"> </Label>
+
+
+               <Label textWrap="true" row="7" col="1" class="titulo" text="Reportes de progreso"> </Label>
+               <Switch row="7" col="2" checked="false" backgroundColor="green"></Switch>
+               <Label row="7" col="1" class="subtitulo"  text="Recibe notificaciones al llegar el reporte"> </Label>
+
+           </GridLayout>
+        </StackLayout>
+     </ScrollView>
 </GridLayout>
