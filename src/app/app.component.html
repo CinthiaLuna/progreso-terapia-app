@@ -8,7 +8,7 @@
         <ScrollView row="1">
             <StackLayout>
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/reporte-diagnostico')"
+                    [class.selected]="isComponentSelected('/reporte-diagnostico')"
                     (tap)="onNavItemTap('/reporte-diagnostico')">
                     <Image class="m-r-10 imageDrawer" src="res://reporte_icono" width="25" height="25"
                         verticalAlignment="center">
@@ -17,14 +17,14 @@
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/reporte-citas')" (tap)="onNavItemTap('/reporte-citas')">
+                    [class.selected]="isComponentSelected('/reporte-citas')" (tap)="onNavItemTap('/reporte-citas')">
                     <Image imageDrawer class="m-r-10" src="res://outline_event_available_black_18" width="25"
                         height="25" verticalAlignment="center">
                     </Image>
                     <Label col="1" text="Reporte de citas" class="p-r-10"></Label>
                 </GridLayout>
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/progreso-paciente')"
+                    [class.selected]="isComponentSelected('/progreso-paciente')"
                     (tap)="onNavItemTap('/progreso-paciente')">
                     <Image imageDrawer class="m-r-10" src="res://progreso_icono" width="25" height="25"
                         verticalAlignment="center">
@@ -33,7 +33,7 @@
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/terapias')" (tap)="onNavItemTap('/terapias')">
+                    [class.selected]="isComponentSelected('/terapias')" (tap)="onNavItemTap('/terapias')">
                     <Image class="m-r-10 imageDrawer" src="res://terapia_icono" width="25" height="25"
                         verticalAlignment="center"></Image>
                     <Label col="1" text="Terapias" class="p-r-10"></Label>
@@ -42,14 +42,14 @@
                 <StackLayout class="hr"></StackLayout>
 
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/notificaciones')" (tap)="onNavItemTap('/notificaciones')">
+                    [class.selected]="isComponentSelected('/notificaciones')" (tap)="onNavItemTap('/notificaciones')">
                     <Image class="m-r-10 imageDrawer" src="res://outline_notifications_black_18" width="25" height="25"
                         verticalAlignment="center">
                     </Image>
                     <Label col="1" text="Notificaciones" class="p-r-10"></Label>
                 </GridLayout>
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.-selected]="isComponentSelected('/cerrar-sesion')" (tap)="onNavItemTap('/cerrar-sesion')">
+                    [class.selected]="isComponentSelected('/cerrar-sesion')" (tap)="onNavItemTap('/cerrar-sesion')">
                     <Image class="m-r-10 imageDrawer" src="res://outline_exit_to_app_black_18" width="25" height="25"
                         verticalAlignment="center">
                     </Image>
