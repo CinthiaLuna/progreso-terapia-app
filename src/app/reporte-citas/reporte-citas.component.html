@@ -24,7 +24,7 @@
         <StackLayout
             *tabItem="{title: 'Calendario', iconSource: 'res://outline_event_available_black_18', textTransform: 'lowercase'}">
             <RadCalendar [eventSource]="calendarEvents" eventsViewMode="Inline" selectionMode="Single" viewMode="Month"
-                transitionMode="Stack" locale="en-US" (dateSelected)="onDateSelected($event)"
+                transitionMode="Stack" locale="es-MX" (dateSelected)="onDateSelected($event)"
                 (dateDeselected)="onDateDeselected($event)" (navigatedToDate)="onNavigatedToDate($event)"
                 (navigatingToDateStarted)="onNavigatingToDateStarted($event)"
                 (viewModeChanged)="onViewModeChanged($event)"></RadCalendar>
