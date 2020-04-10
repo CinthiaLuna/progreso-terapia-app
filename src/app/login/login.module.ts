@@ -4,7 +4,7 @@ import { LoginRoutingModule } from "./login-routing.module";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
-// import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -12,7 +12,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 @NgModule({
     imports: [
-        LoginRoutingModule, NativeScriptCommonModule
+        LoginRoutingModule, NativeScriptCommonModule, NativeScriptFormsModule
     ],
     declarations: [LoginComponent],
     schemas: [NO_ERRORS_SCHEMA]

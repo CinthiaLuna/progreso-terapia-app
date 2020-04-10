@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
+import { PacienteService } from "../shared/paciente/paciente.service";
+import { Paciente } from "../shared/paciente/paciente.model";
 
 @Component({
     selector: "ns-reporte-diagnostico",
@@ -9,57 +11,62 @@ import * as app from "tns-core-modules/application";
 })
 export class ReporteDiagnosticoComponent implements OnInit {
 
-         public showCollapseBox = false;
-         public showCollapseBox2 = false;
-         public showCollapseBox3 = false;
-         public showCollapseBox4 = false;
-         isCollapsed = true;
-         isCollapsed2 = true;
-         isCollapsed3 = true;
-         isCollapsed4 = true;
+    public showCollapseBox = false;
+    public showCollapseBox2 = false;
+    public showCollapseBox3 = false;
+    public showCollapseBox4 = false;
+    isCollapsed = true;
+    isCollapsed2 = true;
+    isCollapsed3 = true;
+    isCollapsed4 = true;
 
-         goCollapse(args) {
-            if (this.showCollapseBox){
-                this.showCollapseBox = false;
-                this.isCollapsed = !this.isCollapsed;
-            }
-            else{
-                this.showCollapseBox = true;
-                this.isCollapsed = !this.isCollapsed;
-            }
+    goCollapse(args) {
+        if (this.showCollapseBox) {
+            this.showCollapseBox = false;
+            this.isCollapsed = !this.isCollapsed;
         }
-        goCollapse2(args) {
-            if (this.showCollapseBox2){
-                this.showCollapseBox2 = false;
-                this.isCollapsed2 = !this.isCollapsed2;
-            }
-            else{
-                this.showCollapseBox2 = true;
-                this.isCollapsed2 = !this.isCollapsed2;
-            }
+        else {
+            this.showCollapseBox = true;
+            this.isCollapsed = !this.isCollapsed;
         }
-        goCollapse3(args) {
-            if (this.showCollapseBox3){
-                this.showCollapseBox3 = false;
-                this.isCollapsed3 = !this.isCollapsed3;
-            }
-            else{
-                this.showCollapseBox3 = true;
-                this.isCollapsed3 = !this.isCollapsed3;
-            }
+    }
+    goCollapse2(args) {
+        if (this.showCollapseBox2) {
+            this.showCollapseBox2 = false;
+            this.isCollapsed2 = !this.isCollapsed2;
         }
-        goCollapse4(args) {
-            if (this.showCollapseBox4){
-                this.showCollapseBox4 = false;
-                this.isCollapsed4 = !this.isCollapsed4;
-            }
-            else{
-                this.showCollapseBox4 = true;
-                this.isCollapsed4 = !this.isCollapsed4;
-            }
+        else {
+            this.showCollapseBox2 = true;
+            this.isCollapsed2 = !this.isCollapsed2;
         }
+    }
+    goCollapse3(args) {
+        if (this.showCollapseBox3) {
+            this.showCollapseBox3 = false;
+            this.isCollapsed3 = !this.isCollapsed3;
+        }
+        else {
+            this.showCollapseBox3 = true;
+            this.isCollapsed3 = !this.isCollapsed3;
+        }
+    }
+    goCollapse4(args) {
+        if (this.showCollapseBox4) {
+            this.showCollapseBox4 = false;
+            this.isCollapsed4 = !this.isCollapsed4;
+        }
+        else {
+            this.showCollapseBox4 = true;
+            this.isCollapsed4 = !this.isCollapsed4;
+        }
+    }
+    pacientes: Paciente[];
+    constructor(private pacienteService: PacienteService) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
+        this.pacienteService.getPaciente().subscribe(
+            pacientes => this.pacientes = pacientes
+        )
 
     }
 
