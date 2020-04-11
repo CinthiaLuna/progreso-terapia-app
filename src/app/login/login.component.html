@@ -5,11 +5,11 @@
       <label class="titulo" text="Bienvenido"></label>
     </StackLayout>
     <StackLayout class="input-field">
-      <TextField class="input" [(ngModel)]="usuarioAppMovil.username" returnKeyType="next" hint="Usuario"
-        autocorrect="false" autocapitalizationType="none"></TextField>
+      <TextField [(ngModel)]="usuarioAppMovil.username" returnKeyType="next" hint="Usuario" autocorrect="false"
+        autocapitalizationType="none"></TextField>
     </StackLayout>
     <StackLayout class="input-field">
-      <TextField class=" input" [(ngModel)]="usuarioAppMovil.password" secure="true" hint="Contraseña">
+      <TextField [(ngModel)]="usuarioAppMovil.password" secure="true" hint="Contraseña">
       </TextField>
     </StackLayout>
 

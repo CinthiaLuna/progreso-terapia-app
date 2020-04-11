@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page/page";
 import { RouterExtensions } from "nativescript-angular/router";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -6,6 +6,7 @@ import { UsuarioAppMovil } from "../shared/usuarioAppMovil/usuarioAppMovil";
 import { alert } from "tns-core-modules/ui/dialogs";
 import { Router } from "@angular/router";
 import { AuthService } from "../shared/usuarioAppMovil/auth.service";
+import * as  base64 from 'base-64';
 
 
 @Component({
@@ -16,8 +17,10 @@ import { AuthService } from "../shared/usuarioAppMovil/auth.service";
 })
 export class LoginComponent implements OnInit {
 
+    @ViewChild('password', { static: false }) passwordField: ElementRef;
     usuarioAppMovil: UsuarioAppMovil;
     form: FormGroup;
+
     constructor(
         private authService: AuthService,
         private page: Page,
@@ -31,17 +34,29 @@ export class LoginComponent implements OnInit {
     }
     login() {
         console.log(this.usuarioAppMovil);
-        if (this.usuarioAppMovil.username == null || this.usuarioAppMovil.password == null) {
+        if (this.usuarioAppMovil.username == null || this.usuarioAppMovil.password == null ||
+            this.usuarioAppMovil.username == "" || this.usuarioAppMovil.password == "") {
             this.alert("Ingresa usuario y contraseña");
             return;
         }
         this.authService.login(this.usuarioAppMovil).subscribe(response => {
-            console.log(response)
-            this.routerExtensions.navigate(['/home']);
+            console.log(response);
 
-        })
+            this.authService.guardarUsuario(response.access_token);
+            this.authService.guardarToken(response.access_token);
+            let usuarioAppMovil = this.authService.usuarioAppMovil;
+            this.routerExtensions.navigate(['/home']);
+            this.alert('bienvenido ' + '${usuarioAppMovil.username}');
+        }, error => {
+            if (error.status == 400) {
+                this.alert("Usuario o clave incorrecta!");
+            }
+        });
+
+
 
     }
+
     alert(message: string) {
         return alert({
             title: "¡Ops!",
@@ -49,4 +64,7 @@ export class LoginComponent implements OnInit {
             message: message
         });
     }
+
+
+
 }
