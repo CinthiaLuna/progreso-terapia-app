@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuarioAppMovil } from './usuarioAppMovil';
 import * as  base64 from 'base-64';
 import 'url-search-params-polyfill';
+import * as localStroage from 'nativescript-localstorage';
 
 
 @Injectable({
@@ -60,18 +61,18 @@ export class AuthService {
         this._usuarioAppMovil = new UsuarioAppMovil();
         this._usuarioAppMovil.username = payload.user_name;
         this._usuarioAppMovil.numeroExpediente = payload.numeroExpediente;
-        sessionStorage.setItem('usuarioAppMovil', JSON.stringify(this._usuarioAppMovil));
+        localStroage.setItem('usuarioAppMovil', JSON.stringify(this._usuarioAppMovil));
 
 
     }
     guardarToken(accessToken: string): void {
         this._token = accessToken;
-        sessionStorage.setItem('token', accessToken);
+        localStroage.setItem('token', accessToken);
 
     }
     obtenerDatosToken(accessToken: string): any {
         if (accessToken != null) {
-            return JSON.parse(base64.encode(accessToken.split(".")[1]));
+            return JSON.parse(base64.decode(accessToken.split(".")[1]));
         }
         return null;
     }
