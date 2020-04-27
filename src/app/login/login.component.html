@@ -1,18 +1,23 @@
-<GridLayout class="pagina" [[formGroup]="form" ]>
-  <StackLayout class="form">
+<GridLayout class="pagina">
+  <StackLayout class="form" >
     <StackLayout>
-      <Image src="res://logo_app " width="250"></Image>
-      <label class="titulo" text="Bienvenido"></label>
+      <Image class="imagen" src="res://logo_negro_con_blanco " width="500"></Image>
+      <label class="titulo" text="INICIO DE SESIÓN"></label>
     </StackLayout>
-    <StackLayout class="input-field">
-      <TextField [(ngModel)]="usuarioAppMovil.username" returnKeyType="next" hint="Usuario" autocorrect="false"
-        autocapitalizationType="none"></TextField>
+    <StackLayout>
+      <label class="input-field" text="Nombre de usuario: "></label>
+      <TextField class="text-usuario-user" [(ngModel)]="usuarioAppMovil.username" hint=" Escriba el usuario" returnKeyType="next" autocorrect="false"></TextField>
     </StackLayout>
-    <StackLayout class="input-field">
-      <TextField [(ngModel)]="usuarioAppMovil.password" secure="true" hint="Contraseña">
-      </TextField>
+    <StackLayout >
+      <label class="input-field" text="Contraseña: "></label>
+      <GridLayout row="1" rows="auto, auto, auto">
+        <GridLayout row="1" columns="*, auto">
+            <TextField #password col="0" class="text-usuario-password" hint=" Escriba la contraseña" [(ngModel)]="usuarioAppMovil.password" secure="true">
+            </TextField>
+            <img col="0" width="18" class="mostrarContrasena"  src="{{urlimagen}}" (tap)="toggleShow()" >
+        </GridLayout>
+    </GridLayout>>
     </StackLayout>
-
     <Button (tap)="login()" text="Iniciar sesión" class="boton-login" type="button"></Button>
   </StackLayout>
 </GridLayout>

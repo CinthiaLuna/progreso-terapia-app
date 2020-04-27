@@ -1,16 +1,17 @@
 .pagina {
-  background-image: url("res://fondo_principal2");
+  background-image: url("res://fondo_negro");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .titulo {
-  color: #333333;
-  margin-left: 70;
+  color: #000000;
+  margin-left: 60;
   font-size: 30px;
   font-weight: bold;
 }
 .form {
-  background-color: #faf4ec;
-  border-radius: 8px;
-  opacity: 0.9;
+  background-color: #ffffff;
+  border-radius: 50px;
   margin-left: 30;
   margin-right: 30;
   flex-grow: 2;
@@ -18,9 +19,50 @@
   border-style: solid;
 }
 .input-field {
-  margin-bottom: 25;
+  margin-left: 10;
+  size: 20;
+  color: #000000;
 }
 .boton-login {
-  background: #333333;
-  color: #ffffff;
+  width: 300;
+  height: 40;
+  margin-top: 20;
+  margin-bottom: 30;
+  border-radius: 10;
+  size: 15;
+  background: black;
+  color: #faf4ec;
+}
+.mostrarContrasena{
+  text-align: right;
+  margin-left: 280;
+  margin-bottom: 15;
+  color: #333333;
+}
+.text-usuario-user{
+  border-radius: 8;
+  border-width: 1 1 1 1;
+  border-color: #55565a;
+  placeholder-color: #a3a0a0;
+  font-size: 12;
+  background-image: url("res://baseline_person_black_18");
+  background-repeat: no-repeat;
+  background-position: 2% 50%;
+  padding-left: 25;
+
+}
+.text-usuario-password{
+  border-radius: 8;
+  border-width: 1 1 1 1;
+  border-color: #55565a;
+  placeholder-color: #a3a0a0;
+  font-size: 12;
+  background-image: url("res://baseline_lock_black_18");
+  background-repeat: no-repeat;
+  background-position: 2% 50%;
+  padding-left: 25;
+
+}
+.ojo{
+  margin-left: 290;
 }

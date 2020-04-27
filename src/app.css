@@ -31,12 +31,11 @@ button.-primary {
 }
 .fondo {
   opacity: 0.5;
-  background-image: url("res://fondo_principal");
+  background-image: url("res://fondo_cara");
   background-repeat: no-repeat;
   background-size: cover;
 }
 .contenido {
-  opacity: 0.8;
   font-size: 15;
   align-content: center;
   text-align: center;

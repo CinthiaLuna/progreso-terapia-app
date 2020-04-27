@@ -9,6 +9,7 @@ import { AuthService } from "../shared/usuarioAppMovil/auth.service";
 import * as  base64 from 'base-64';
 
 
+
 @Component({
     selector: "ns-login",
     moduleId: module.id,
@@ -18,8 +19,9 @@ import * as  base64 from 'base-64';
 export class LoginComponent implements OnInit {
 
     @ViewChild('password', { static: false }) passwordField: ElementRef;
+    urlimagen = "res://baseline_visibility_off_black_18";
     usuarioAppMovil: UsuarioAppMovil;
-    form: FormGroup;
+    form: FormGroup
 
     constructor(
         private authService: AuthService,
@@ -64,6 +66,20 @@ export class LoginComponent implements OnInit {
             message: message
         });
     }
+    toggleShow() {
+        console.log(this.passwordField.nativeElement.secure);
+        if (this.passwordField.nativeElement.secure == true) {
+            this.urlimagen ="res://baseline_visibility_black_18"; 
+        }else{
+            this.urlimagen ="res://baseline_visibility_off_black_18";
+        }
+        this.passwordField.nativeElement.secure = !this.passwordField.nativeElement.secure;
+
+
+    }
+
+
+
 
 
 
