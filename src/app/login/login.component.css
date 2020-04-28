@@ -5,7 +5,9 @@
 }
 .titulo {
   color: #000000;
-  margin-left: 60;
+  margin-top: -30;
+  margin-left: 50;
+  margin-bottom: 20;
   font-size: 30px;
   font-weight: bold;
 }
@@ -14,6 +16,7 @@
   border-radius: 50px;
   margin-left: 30;
   margin-right: 30;
+  margin-top: 20;
   flex-grow: 2;
   vertical-align: middle;
   border-style: solid;
@@ -65,4 +68,8 @@
 }
 .ojo{
   margin-left: 290;
+}
+.imagen{
+  margin-top: -20;
+  margin-left: 10;
 }

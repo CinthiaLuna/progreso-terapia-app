@@ -39,16 +39,16 @@ export class LoginComponent implements OnInit {
         if (this.usuarioAppMovil.username == null || this.usuarioAppMovil.password == null ||
             this.usuarioAppMovil.username == "" || this.usuarioAppMovil.password == "") {
             this.alert("Ingresa usuario y contraseña");
+            this.usuarioAppMovil.username == "";
+            this.usuarioAppMovil.password == "";
             return;
         }
         this.authService.login(this.usuarioAppMovil).subscribe(response => {
             console.log(response);
-
             this.authService.guardarUsuario(response.access_token);
             this.authService.guardarToken(response.access_token);
             let usuarioAppMovil = this.authService.usuarioAppMovil;
             this.routerExtensions.navigate(['/home']);
-            this.alert('bienvenido ' + '${usuarioAppMovil.username}');
         }, error => {
             if (error.status == 400) {
                 this.alert("Usuario o clave incorrecta!");
