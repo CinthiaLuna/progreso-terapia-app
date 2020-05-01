@@ -5,6 +5,9 @@ import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nat
 import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
 import { AuthService } from "./shared/usuarioAppMovil/auth.service";
+import { Paciente } from "./shared/paciente/paciente";
+import { PacienteService } from "./shared/paciente/paciente.service";
+import { UsuarioAppMovil } from "./shared/usuarioAppMovil/usuarioAppMovil";
 
 @Component({
     selector: "ns-app",
@@ -13,15 +16,28 @@ import { AuthService } from "./shared/usuarioAppMovil/auth.service";
 export class AppComponent implements OnInit {
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
+    paciente: Paciente[];
 
-    constructor(private router: Router, private routerExtensions: RouterExtensions, private authService: AuthService) {
+    constructor(private router: Router,
+        private routerExtensions: RouterExtensions,
+        private authService: AuthService,
+        private pacienteService: PacienteService
+    ) {
+        while (this.authService.isAuthenticated() == true) {
+            this.pacienteService.getPaciente().subscribe(
+                result => {
+                    this.paciente = result;
+                    console.log(result);
+                }
+            );
+
+        }
         // Use the component constructor to inject services.
     }
 
     ngOnInit(): void {
         this._activatedUrl = "/home";
         this._sideDrawerTransition = new SlideInOnTopTransition();
-
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
@@ -46,7 +62,7 @@ export class AppComponent implements OnInit {
         sideDrawer.closeDrawer();
     }
 
-    logout(): void{
+    logout(): void {
         this.authService.logout();
         this.routerExtensions.navigate(['/login']);
         const sideDrawer = <RadSideDrawer>app.getRootView();

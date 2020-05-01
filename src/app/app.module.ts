@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular"
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { PacienteService } from "./shared/paciente/paciente.service";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -18,7 +19,7 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
         NativeScriptHttpClientModule,
     ],
     declarations: [AppComponent],
-    providers: [],
+    providers: [PacienteService],
     schemas: [NO_ERRORS_SCHEMA]
 })
 /*

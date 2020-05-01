@@ -2,8 +2,8 @@
     <GridLayout tkDrawerContent rows="auto, *">
         <StackLayout row="0" class="barra-menu">
             <Label></Label>
-            <Label class="nt-drawer__header-brand" text="User Name"></Label>
-            <Label class="nt-drawer__header-footnote" text="username@mail.com"></Label>
+            <Label class="nt-drawer__header-brand" text="{{pacienteService.nombrePaciente}}"></Label>
+            <Label class="nt-drawer__header-footnote" text="{{pacienteService.numero_expediente}}"></Label>
         </StackLayout>
         <ScrollView row="1">
             <StackLayout>

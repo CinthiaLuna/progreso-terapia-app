@@ -1,18 +1,30 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map, catchError } from "rxjs/operators";
-import { Paciente } from "./paciente.model";
+import { Paciente } from "./paciente";
 import { throwError, Observable } from "rxjs";
 import { idProperty } from "tns-core-modules/ui/page/page";
 import { RouterExtensions } from "nativescript-angular/router";
+import { AuthService } from "../usuarioAppMovil/auth.service";
 
 @Injectable()
 export class PacienteService {
-    private urlEndPoint: string = 'http://192.168.100.214:8080/api/oauth2/paciente/';
-    constructor(private http: HttpClient, private routerExtensions: RouterExtensions) { }
+    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/';
+    
+    private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    constructor(private http: HttpClient, private routerExtensions: RouterExtensions, private authService: AuthService) { }
+
+    private agregarAuthorizationHeaders(){
+        let token = this.authService.token;
+        if (token != null) {
+            return this.httpHeaders.append('Authorization', 'Bearer ' + token);
+            
+        }return this.httpHeaders;
+
+    }
 
     getPaciente(): Observable<Paciente[]> {
-        return this.http.get<Paciente[]>(this.urlEndPoint).pipe(
+        return this.http.get<Paciente[]>(this.urlEndPoint + 'paciente', {headers: this.agregarAuthorizationHeaders()}).pipe(
             catchError(error => {
                 this.isNoAuthorizado(error);
                 return throwError(error);

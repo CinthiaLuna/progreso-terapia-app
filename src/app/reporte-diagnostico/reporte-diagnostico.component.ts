@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { PacienteService } from "../shared/paciente/paciente.service";
-import { Paciente } from "../shared/paciente/paciente.model";
+import { Paciente } from "../shared/paciente/paciente";
 
 @Component({
     selector: "ns-reporte-diagnostico",
