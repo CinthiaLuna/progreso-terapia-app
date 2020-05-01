@@ -49,7 +49,7 @@
                     <Label col="1" text="Notificaciones" class="p-r-10"></Label>
                 </GridLayout>
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"
-                    [class.selected]="isComponentSelected('/cerrar-sesion')" (tap)="onNavItemTap('/cerrar-sesion')">
+                    [class.selected]="isComponentSelected('/cerrar-sesion')" (tap)="logout()">
                     <Image class="m-r-10 imageDrawer" src="res://outline_exit_to_app_black_18" width="25" height="25"
                         verticalAlignment="center">
                     </Image>

@@ -4,9 +4,9 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuarioAppMovil } from "../shared/usuarioAppMovil/usuarioAppMovil";
 import { alert } from "tns-core-modules/ui/dialogs";
-import { Router } from "@angular/router";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 import { AuthService } from "../shared/usuarioAppMovil/auth.service";
-import * as  base64 from 'base-64';
+
 
 
 
@@ -61,8 +61,8 @@ export class LoginComponent implements OnInit {
 
     alert(message: string) {
         return alert({
-            title: "¡Ops!",
-            okButtonText: "Regresar",
+            title: "¡Error!",
+            okButtonText: "ok",
             message: message
         });
     }
@@ -74,8 +74,6 @@ export class LoginComponent implements OnInit {
             this.urlimagen ="res://baseline_visibility_off_black_18";
         }
         this.passwordField.nativeElement.secure = !this.passwordField.nativeElement.secure;
-
-
     }
 
 

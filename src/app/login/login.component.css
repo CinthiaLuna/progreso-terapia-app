@@ -23,7 +23,7 @@
 }
 .input-field {
   margin-left: 10;
-  size: 20;
+  size: 25;
   color: #000000;
 }
 .boton-login {
@@ -32,7 +32,7 @@
   margin-top: 20;
   margin-bottom: 30;
   border-radius: 10;
-  size: 15;
+  size: 20;
   background: black;
   color: #faf4ec;
 }
@@ -47,7 +47,7 @@
   border-width: 1 1 1 1;
   border-color: #55565a;
   placeholder-color: #a3a0a0;
-  font-size: 12;
+  font-size: 15;
   background-image: url("res://baseline_person_black_18");
   background-repeat: no-repeat;
   background-position: 2% 50%;
@@ -59,7 +59,7 @@
   border-width: 1 1 1 1;
   border-color: #55565a;
   placeholder-color: #a3a0a0;
-  font-size: 12;
+  font-size: 15;
   background-image: url("res://baseline_lock_black_18");
   background-repeat: no-repeat;
   background-position: 2% 50%;
