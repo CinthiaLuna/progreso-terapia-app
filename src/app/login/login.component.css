@@ -6,7 +6,6 @@
 .titulo {
   color: #000000;
   margin-top: -30;
-  margin-left: 40;
   margin-bottom: 20;
   font-size: 30px;
   font-weight: bold;
@@ -38,7 +37,6 @@
 }
 .mostrarContrasena{
   text-align: right;
-  margin-left: 280;
   margin-bottom: 15;
   color: #333333;
 }

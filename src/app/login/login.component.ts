@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     urlimagen = "res://baseline_visibility_off_black_18";
     usuarioAppMovil: UsuarioAppMovil;
     form: FormGroup
+    procesando = false;
 
     constructor(
         private authService: AuthService,
@@ -36,11 +37,13 @@ export class LoginComponent implements OnInit {
     }
     login() {
         console.log(this.usuarioAppMovil);
+        this.procesando = true;
         if (this.usuarioAppMovil.username == null || this.usuarioAppMovil.password == null ||
             this.usuarioAppMovil.username == "" || this.usuarioAppMovil.password == "") {
             this.alert("Ingresa usuario y contraseña");
             this.usuarioAppMovil.username == "";
             this.usuarioAppMovil.password == "";
+            this.procesando = false;
             return;
         }
         this.authService.login(this.usuarioAppMovil).subscribe(response => {
@@ -49,9 +52,11 @@ export class LoginComponent implements OnInit {
             this.authService.guardarToken(response.access_token);
             let usuarioAppMovil = this.authService.usuarioAppMovil;
             this.routerExtensions.navigate(['/home']);
+            this.procesando = true;
         }, error => {
             if (error.status == 400) {
                 this.alert("Usuario o clave incorrecta!");
+                this.procesando = true;
             }
         });
 
@@ -69,7 +74,7 @@ export class LoginComponent implements OnInit {
     toggleShow() {
         console.log(this.passwordField.nativeElement.secure);
         if (this.passwordField.nativeElement.secure == true) {
-            this.urlimagen ="res://baseline_visibility_black_18"; 
+            this.urlimagen ="res://baseline_visibility_black_18";
         }else{
             this.urlimagen ="res://baseline_visibility_off_black_18";
         }
