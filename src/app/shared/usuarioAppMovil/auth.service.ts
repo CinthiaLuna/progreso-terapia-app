@@ -5,6 +5,7 @@ import { UsuarioAppMovil } from './usuarioAppMovil';
 import * as  base64 from 'base-64';
 import 'url-search-params-polyfill';
 import * as localStroage from 'nativescript-localstorage';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthService {
     private _usuarioAppMovil: UsuarioAppMovil;
     private _token: string;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: RouterExtensions) { }
 
     public get usuarioAppMovil(): UsuarioAppMovil {
         if (this._usuarioAppMovil != null) {
@@ -41,7 +42,7 @@ export class AuthService {
     }
 
     login(usuarioAppMovil: UsuarioAppMovil): Observable<any> {
-        const urlEndpoint = 'http://192.168.0.112:8080/oauth/token';
+        const urlEndpoint = 'http://192.140.25.11:8080/oauth/token';
         const credenciales = base64.encode('androidApp' + ':' + '123');
         const httpHeaders = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -89,5 +90,6 @@ export class AuthService {
         this._token = null;
         this._usuarioAppMovil = null;
         sessionStorage.clear();
+        this.router.navigate(['/'], { clearHistory: true })
     }
 }
