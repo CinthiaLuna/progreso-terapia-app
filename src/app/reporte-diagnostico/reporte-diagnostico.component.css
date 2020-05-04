@@ -1,8 +1,11 @@
 .paciente {
-    background-color: #333333;
+    background-color: black;
     color: white;
-    align-items: center;
-    align-content: center;
+    border-radius: 5;
+    margin-left: 5;
+    margin-top: 5;
+    margin-bottom: 10;
+    margin-right: 5;
 }
 
 .diagnosticoLabel {
@@ -24,3 +27,29 @@
 
     transform: rotate(270deg);
   }
+.ficha{
+    border-radius: 10;
+    border-color: white;
+    border-width: 1 1 1 1;
+}
+.paciente-text{ 
+    text-align: justify;
+    size: 20;
+    margin-left: 15;
+}
+.fondoreporte{
+    margin-top: 10;
+    margin-left: 10;
+    margin-bottom: 20;
+    margin-right: 10;
+    border-radius: 5;
+    background-color: white;
+    opacity: 0.9;
+
+}
+.item-lista{
+    margin-left: 10;
+    opacity: 1;
+
+
+}

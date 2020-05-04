@@ -2,6 +2,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { ReporteDiagnosticoComponent } from "./reporte-diagnostico.component";
 import { ReporteDiagnosticoRoutingModule } from "./reporte-diagnostico-routing.module";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { PacienteService } from "../shared/paciente/paciente.service";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -12,7 +13,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 @NgModule({
     imports: [ReporteDiagnosticoRoutingModule, NativeScriptCommonModule],
     declarations: [ReporteDiagnosticoComponent],
-    providers: [],
+    providers: [PacienteService],
     schemas: [NO_ERRORS_SCHEMA]
 })
 /*

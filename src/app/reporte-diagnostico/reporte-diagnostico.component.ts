@@ -19,6 +19,11 @@ export class ReporteDiagnosticoComponent implements OnInit {
     isCollapsed2 = true;
     isCollapsed3 = true;
     isCollapsed4 = true;
+    paciente : Paciente;
+    nombrePaciente: string;
+    numeroExpediente: string;
+    edadPaciente: number;
+
 
     goCollapse(args) {
         if (this.showCollapseBox) {
@@ -60,12 +65,18 @@ export class ReporteDiagnosticoComponent implements OnInit {
             this.isCollapsed4 = !this.isCollapsed4;
         }
     }
-    pacientes: Paciente[];
     constructor(private pacienteService: PacienteService) { }
 
     ngOnInit() {
         this.pacienteService.getPaciente().subscribe(
-            pacientes => this.pacientes = pacientes
+            result => {
+                this.paciente = result;
+                this.nombrePaciente = this.paciente.nombrePaciente + ' ' + this.paciente.apellidoPaciente;
+                this.numeroExpediente = this.paciente.numero_expediente;
+                this.edadPaciente = this.paciente.edadPaciente;
+                console.log(result);
+
+            }
         )
 
     }

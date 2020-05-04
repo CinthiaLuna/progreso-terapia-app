@@ -24,7 +24,7 @@ button.-primary {
   font-size: 18;
 }
 .barra {
-  background-color: #333333;
+  background-color: #000000;
 }
 .titulo {
   color: #f4f3fa;
@@ -46,7 +46,7 @@ button.-primary {
 .barra-menu {
   padding-top: 10;
   padding-bottom: 10;
-  background-color: #333333;
+  background-color: #000000;
   color: #ffffff;
   font-size: 20;
   text-align: center;

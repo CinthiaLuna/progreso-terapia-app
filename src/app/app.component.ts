@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges, AfterContentInit, DoCheck } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
@@ -16,32 +16,32 @@ import { UsuarioAppMovil } from "./shared/usuarioAppMovil/usuarioAppMovil";
 export class AppComponent implements OnInit {
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
-    paciente: Paciente[];
+    paciente: Paciente;
 
     constructor(private router: Router,
         private routerExtensions: RouterExtensions,
         private authService: AuthService,
         private pacienteService: PacienteService
     ) {
-        while (this.authService.isAuthenticated() == true) {
-            this.pacienteService.getPaciente().subscribe(
-                result => {
-                    this.paciente = result;
-                    console.log(result);
-                }
-            );
-
-        }
         // Use the component constructor to inject services.
     }
 
+
     ngOnInit(): void {
         this._activatedUrl = "/home";
+        this.pacienteService.getPaciente().subscribe(
+            result => {
+                this.paciente = result;
+                console.log(result);
+            }
+        );
         this._sideDrawerTransition = new SlideInOnTopTransition();
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
     }
+
+
 
     get sideDrawerTransition(): DrawerTransitionBase {
         return this._sideDrawerTransition;

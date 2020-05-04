@@ -9,7 +9,7 @@ import { AuthService } from "../usuarioAppMovil/auth.service";
 
 @Injectable()
 export class PacienteService {
-    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/';
+    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/paciente';
     
     private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     constructor(private http: HttpClient, private routerExtensions: RouterExtensions, private authService: AuthService) { }
@@ -23,13 +23,14 @@ export class PacienteService {
 
     }
 
-    getPaciente(): Observable<Paciente[]> {
-        return this.http.get<Paciente[]>(this.urlEndPoint + 'paciente', {headers: this.agregarAuthorizationHeaders()}).pipe(
+    getPaciente(): Observable<Paciente> {
+        return this.http.get<Paciente>(this.urlEndPoint, {headers: this.agregarAuthorizationHeaders()}).pipe(
+            map(response => response as Paciente),
             catchError(error => {
                 this.isNoAuthorizado(error);
                 return throwError(error);
             })
-        )
+        );
     }
 
     handleErrors(error: Response) {
