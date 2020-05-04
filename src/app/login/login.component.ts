@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         }, error => {
             if (error.status == 400) {
                 this.alert("Usuario o clave incorrecta!");
-                this.procesando = true;
+                this.procesando = false;
             }
         });
 
