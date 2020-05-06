@@ -3,6 +3,9 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { PacienteService } from "../shared/paciente/paciente.service";
 import { Paciente } from "../shared/paciente/paciente";
+import { ExploracionFonologicaService } from "../shared/exploracion_fonologica/exploracion_fonologica.service";
+import { ExploracionFonologica } from "../shared/exploracion_fonologica/exploracion_fonologica";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
     selector: "ns-reporte-diagnostico",
@@ -11,61 +14,17 @@ import { Paciente } from "../shared/paciente/paciente";
 })
 export class ReporteDiagnosticoComponent implements OnInit {
 
-    public showCollapseBox = false;
-    public showCollapseBox2 = false;
-    public showCollapseBox3 = false;
-    public showCollapseBox4 = false;
-    isCollapsed = true;
-    isCollapsed2 = true;
-    isCollapsed3 = true;
-    isCollapsed4 = true;
-    paciente : Paciente;
+    paciente: Paciente;
+    exploracionesFonologicas: ExploracionFonologica[];
     nombrePaciente: string;
     numeroExpediente: string;
     edadPaciente: number;
 
-
-    goCollapse(args) {
-        if (this.showCollapseBox) {
-            this.showCollapseBox = false;
-            this.isCollapsed = !this.isCollapsed;
-        }
-        else {
-            this.showCollapseBox = true;
-            this.isCollapsed = !this.isCollapsed;
-        }
-    }
-    goCollapse2(args) {
-        if (this.showCollapseBox2) {
-            this.showCollapseBox2 = false;
-            this.isCollapsed2 = !this.isCollapsed2;
-        }
-        else {
-            this.showCollapseBox2 = true;
-            this.isCollapsed2 = !this.isCollapsed2;
-        }
-    }
-    goCollapse3(args) {
-        if (this.showCollapseBox3) {
-            this.showCollapseBox3 = false;
-            this.isCollapsed3 = !this.isCollapsed3;
-        }
-        else {
-            this.showCollapseBox3 = true;
-            this.isCollapsed3 = !this.isCollapsed3;
-        }
-    }
-    goCollapse4(args) {
-        if (this.showCollapseBox4) {
-            this.showCollapseBox4 = false;
-            this.isCollapsed4 = !this.isCollapsed4;
-        }
-        else {
-            this.showCollapseBox4 = true;
-            this.isCollapsed4 = !this.isCollapsed4;
-        }
-    }
-    constructor(private pacienteService: PacienteService) { }
+    constructor(
+        private pacienteService: PacienteService, 
+        private exploracionFonologicaService: ExploracionFonologicaService,
+        private routerExtensions: RouterExtensions,
+        ) { }
 
     ngOnInit() {
         this.pacienteService.getPaciente().subscribe(
@@ -77,12 +36,22 @@ export class ReporteDiagnosticoComponent implements OnInit {
                 console.log(result);
 
             }
-        )
+        );
+        this.exploracionFonologicaService.obtenerExploracionFonologica().subscribe(
+            result => {
+                this.exploracionesFonologicas = result;
+            }
+        );
 
+    }
+
+    onNavigate(){
+        this.routerExtensions.navigate(["/reporte-diagnostico/detalle-diagnostico"])
     }
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }
+
 }

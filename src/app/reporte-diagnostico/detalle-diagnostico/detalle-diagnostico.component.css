@@ -73,6 +73,9 @@
     background-color: white;
     opacity: 0.9;
 }
+.item-lista{
+    margin-left: 15;
+}
 .lista{
     height: 80;
     margin-top: 5;
