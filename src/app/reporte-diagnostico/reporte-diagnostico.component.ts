@@ -21,8 +21,9 @@ export class ReporteDiagnosticoComponent implements OnInit {
     nombrePaciente: string;
     numeroExpediente: string;
     edadPaciente: number;
-    fechasExploracionFonologica:string[];
+    fechaExploracionFonologica:string;
     array = new Array();
+    array2 = new Array();
 
     constructor(
         private pacienteService: PacienteService, 
@@ -44,6 +45,12 @@ export class ReporteDiagnosticoComponent implements OnInit {
         this.exploracionFonologicaService.obtenerExploracionFonologica().subscribe(
             result => {
                 this.exploracionesFonologicas = result;
+                for (let index = 0; index < this.exploracionesFonologicas.length; index++) {
+                    this.array[index]= this.exploracionesFonologicas[index].fechaExploracionFonlogica;      
+                    this.array2[index] = this.array[index].split("T", 1);
+;
+                }
+                console.dir(this.array2);
             }
         );
 

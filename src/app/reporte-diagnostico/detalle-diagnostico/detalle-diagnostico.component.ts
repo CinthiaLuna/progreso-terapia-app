@@ -30,13 +30,6 @@ export class DetalleDiagnosticoComponent implements OnInit {
         this.exploracionFonologica=JSON.parse(this.activedRoute.snapshot.queryParams["exploracionFonologica"]);
         this.nombrePaciente = this.exploracionFonologica.paciente.nombrePaciente + " " + this.exploracionFonologica.paciente.apellidoPaciente;
         this.edadPaciente = this.exploracionFonologica.paciente.edadPaciente + " años";
-        /* Formato de fecha */
-        this.fechaExploracionFonologica = this.exploracionFonologica.fechaExploracionFonlogica;
-        this.array = this.fechaExploracionFonologica.split("T");
-        this.array = this.array[0].split("-");
-        this.fechaExploracionFonologica = this.array[2] + "-" + this.array[1] + "-" + this.array[0];
-        console.dir(this.array);
-        console.log(this.fechaExploracionFonologica);
     }
 
     ngOnInit() {
