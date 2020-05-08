@@ -6,6 +6,7 @@ import { PacienteService } from "../shared/paciente/paciente.service";
 import { ExploracionFonologicaService } from "../shared/exploracion_fonologica/exploracion_fonologica.service";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { DetalleDiagnosticoComponent } from "./detalle-diagnostico/detalle-diagnostico.component";
+import { PlanTrabajoService } from "../shared/plan_trabajo/plan_trabajo.service";
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
@@ -15,7 +16,7 @@ import { DetalleDiagnosticoComponent } from "./detalle-diagnostico/detalle-diagn
 @NgModule({
     imports: [ReporteDiagnosticoRoutingModule, NativeScriptCommonModule, NativeScriptUIListViewModule],
     declarations: [ReporteDiagnosticoComponent, DetalleDiagnosticoComponent],
-    providers: [PacienteService, ExploracionFonologicaService],
+    providers: [PacienteService, ExploracionFonologicaService, PlanTrabajoService],
     schemas: [NO_ERRORS_SCHEMA]
 })
 /*

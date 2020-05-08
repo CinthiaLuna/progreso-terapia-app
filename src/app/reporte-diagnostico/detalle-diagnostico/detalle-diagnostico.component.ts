@@ -6,6 +6,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { ExploracionFonologicaService } from "~/app/shared/exploracion_fonologica/exploracion_fonologica.service";
 import { PacienteService } from "~/app/shared/paciente/paciente.service";
 import { ActivatedRoute } from "@angular/router";
+import { PlanTrabajoService } from "~/app/shared/plan_trabajo/plan_trabajo.service";
+import { PlanTrabajo } from "~/app/shared/plan_trabajo/plan_trabajo.";
 
 declare var jsPDF: any;
 
@@ -18,11 +20,16 @@ export class DetalleDiagnosticoComponent implements OnInit {
     public exploracionFonologica : any;
     nombrePaciente : string;
     edadPaciente: string;
-    fechaExploracionFonologica: string
-    array = new Array();
+    planTrabajoIndicaciones : string;
+    planTrabajonumeroSesiones: number;
+    planTrabajonumeroBloque: number;
+    planTrabajotemporalidad: string;
+
+
 
     constructor(
         private pacienteService: PacienteService, 
+        private planTrabajoService: PlanTrabajoService, 
         private exploracionFonologicaService: ExploracionFonologicaService,
         private routerExtensions: RouterExtensions,
         private activedRoute : ActivatedRoute
@@ -33,8 +40,15 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        this.planTrabajoService.obtenerPlanTrabajoPorExploracionFonologica(this.exploracionFonologica.idExploracionFonologica).subscribe( 
+            result => {
 
+                this.planTrabajoIndicaciones = result.indicacionesProcedimiento;
+                this.planTrabajotemporalidad = result.temporalidad;
+                this.planTrabajonumeroSesiones = result.numeroSesiones;
+                this.planTrabajonumeroBloque = result.numeroBloque;
+            }
+        )
     }
 
     onNavigate() {

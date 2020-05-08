@@ -45,14 +45,14 @@
                 <Image src="res://baseline_expand_more_black_18" class="icon" [ngClass]='{ collapse: isCollapsed4 }'
                     (tap)="goCollapse4($event)"></Image>
             </FlexboxLayout>
-            <!-- <ListView [items]="planTrabajo" ">
-            <ng-template let-plan="item" > -->
             <StackLayout class="item-lista" [visibility]="showCollapseBox4 ? 'visible' : 'collapse'">
-                <Label textWrap="true" text="1. Continuar terapia de lenguaje y aprendizaje semanal"></Label>
-                <Label textWrap="true" text="2. Cita al terminar terapias"></Label>
+                <Label class="paciente-text" text="Cada cuando se realiza el plan de trabajo:" textWrap="true"></Label>
+                <Label  class="paciente-text-dato" text="{{planTrabajotemporalidad}}" textWrap="true"></Label>
+                <Label  class="paciente-text" text="número de bloque: " textWrap="true"></Label>
+                <Label  class="paciente-text-dato" text="{{planTrabajonumeroBloque}}" textWrap="true"></Label>
+                <Label class="paciente-text" text="Descripción de plan de trabajo:" textWrap="true"></Label>
+                <TextView class="paciente-text-dato" text="{{planTrabajoIndicaciones}}" editable="false"></TextView>
             </StackLayout>
-            <!--   </ng-template>
-           </ListView>-->
         </StackLayout>
     </ScrollView>
 </GridLayout>
