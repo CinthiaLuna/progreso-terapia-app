@@ -33,36 +33,24 @@
     border-width: 1 1 1 1;
 }
 .paciente-text{ 
-    size: 40;
+    size: 50;
+    font-weight: bold;
     margin-left: 15;
 }
 .paciente-text-top{
-    size: 40;
-    margin-left: 15;
-    margin-top: 5;
-}
-.paciente-text-bottom{
-    size: 40;
-    margin-left: 15;
-    margin-bottom: 5;
-}
-.paciente-text-bold{
-    padding-left: 30;
-    margin-top: -20;
+    size: 50;
     font-weight: bold;
-}
-.paciente-text-bold-top{
-    padding-left: 30;
-    margin-top: 10;
-    font-weight: bold;
-}
-.paciente-text-grado{
-    margin-left: -85;
+    margin-left: 20;
     margin-top: 10;
 }
-.paciente-text-fecha{
-    margin-top: -20;
-    margin-left: -120;
+.paciente-text-dato{
+    size:50;
+    margin-left: 50;
+}
+.paciente-text-dato-bottom{
+    size:50;
+    margin-left: 50;
+    margin-bottom: 10;
 }
 .fondoreporte{
     margin-top: 10;

@@ -7,6 +7,8 @@ import { ExploracionFonologicaService } from "../shared/exploracion_fonologica/e
 import { ExploracionFonologica } from "../shared/exploracion_fonologica/exploracion_fonologica";
 import { RouterExtensions } from "nativescript-angular/router";
 
+
+
 @Component({
     selector: "ns-reporte-diagnostico",
     templateUrl: "./reporte-diagnostico.component.html",
@@ -19,6 +21,8 @@ export class ReporteDiagnosticoComponent implements OnInit {
     nombrePaciente: string;
     numeroExpediente: string;
     edadPaciente: number;
+    fechasExploracionFonologica:string[];
+    array = new Array();
 
     constructor(
         private pacienteService: PacienteService, 
@@ -45,8 +49,13 @@ export class ReporteDiagnosticoComponent implements OnInit {
 
     }
 
-    onNavigate(){
-        this.routerExtensions.navigate(["/reporte-diagnostico/detalle-diagnostico"])
+
+    onNavigate(item){
+        this.routerExtensions.navigate(["/reporte-diagnostico/detalle-diagnostico"], {
+            queryParams : {
+                exploracionFonologica: JSON.stringify(item)
+            }
+        })
     }
 
     onDrawerButtonTap(): void {

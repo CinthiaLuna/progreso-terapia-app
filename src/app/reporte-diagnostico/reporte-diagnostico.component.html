@@ -18,7 +18,7 @@
             </StackLayout>
             <RadListView [items]="exploracionesFonologicas">
                 <ng-template let-item="item">
-                    <GridLayout class="lista" rows="*,*" columns="*, *" (tap)="onNavigate()">
+                    <GridLayout class="lista" rows="*,*" columns="*, *" (tap)="onNavigate(item)">
                         <label row="0" col="0" class="paciente-text-bold-top" text="Diagnóstico:"></label>
                         <Label row="0" col="1" class="paciente-text-grado"[text]="item.gradoTrastorno"></Label>
                         <label row="1" col="0" class="paciente-text-bold" text="Fecha:"></label>

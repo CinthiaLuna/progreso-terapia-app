@@ -5,6 +5,9 @@ import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ExploracionFonologicaService } from "~/app/shared/exploracion_fonologica/exploracion_fonologica.service";
 import { PacienteService } from "~/app/shared/paciente/paciente.service";
+import { ActivatedRoute } from "@angular/router";
+
+declare var jsPDF: any;
 
 @Component({
     selector: "ns-detalle-reporte",
@@ -12,12 +15,29 @@ import { PacienteService } from "~/app/shared/paciente/paciente.service";
     styleUrls: ["./detalle-diagnostico.component.css"]
 })
 export class DetalleDiagnosticoComponent implements OnInit {
+    public exploracionFonologica : any;
+    nombrePaciente : string;
+    edadPaciente: string;
+    fechaExploracionFonologica: string
+    array = new Array();
 
     constructor(
         private pacienteService: PacienteService, 
         private exploracionFonologicaService: ExploracionFonologicaService,
         private routerExtensions: RouterExtensions,
-    ) { }
+        private activedRoute : ActivatedRoute
+    ) { 
+        this.exploracionFonologica=JSON.parse(this.activedRoute.snapshot.queryParams["exploracionFonologica"]);
+        this.nombrePaciente = this.exploracionFonologica.paciente.nombrePaciente + " " + this.exploracionFonologica.paciente.apellidoPaciente;
+        this.edadPaciente = this.exploracionFonologica.paciente.edadPaciente + " años";
+        /* Formato de fecha */
+        this.fechaExploracionFonologica = this.exploracionFonologica.fechaExploracionFonlogica;
+        this.array = this.fechaExploracionFonologica.split("T");
+        this.array = this.array[0].split("-");
+        this.fechaExploracionFonologica = this.array[2] + "-" + this.array[1] + "-" + this.array[0];
+        console.dir(this.array);
+        console.log(this.fechaExploracionFonologica);
+    }
 
     ngOnInit() {
         

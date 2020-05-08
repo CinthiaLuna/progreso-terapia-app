@@ -12,10 +12,15 @@
 <GridLayout>
     <ScrollView>
         <StackLayout class ="fondoreporte">
-            <StackLayout class='paciente'>
-                <Label class="paciente-text" text="Nombre:  {{nombrePaciente}}"></Label>
-                <Label class="paciente-text" text="Número de expediente: {{numeroExpediente}}"></Label>
-                <Label class="paciente-text" text="Edad: {{edadPaciente}} años"></Label>
+            <StackLayout class="paciente">
+                <Label class="paciente-text-top" text="Fecha de exploracion: " ></Label>
+                <Label class="paciente-text-dato" text="{{fechaExploracionFonologica}}" ></Label>
+                <Label class="paciente-text" text="Nombre del paciente: " ></Label>
+                <Label class="paciente-text-dato" text="{{nombrePaciente}}" ></Label>
+                <Label class="paciente-text" text="Número de expediente: " ></Label>
+                <Label class="paciente-text-dato" [text]="exploracionFonologica.paciente.numero_expediente" ></Label>
+                <Label class="paciente-text" text="Edad: " ></Label>
+                <Label class="paciente-text-dato-bottom" text="{{edadPaciente}}"></Label>
             </StackLayout>
             <!-- Diagnostico / Collapse-->
             <FlexboxLayout class="item-lista" justifyContent="space-between" alignItems="center" alignContent="center">
@@ -24,15 +29,13 @@
                 <Image src="res://baseline_expand_more_black_18" class="icon" [ngClass]='{ collapse: isCollapsed }'
                     (tap)="goCollapse($event)"></Image>
             </FlexboxLayout>
-            <!-- <ListView [items]="diagnosticos">
-                        <ng-template let-diag="item">-->
             <StackLayout  class="item-lista" [visibility]="showCollapseBox ? 'visible' : 'collapse'">
-                <Label class="diagnosticoLabel" text="Retardo de lenguaje anartico moderado" row='0' col='1'></Label>
-                <Label class="diagnosticoLabel" text="Audicion normal" row="1" col="1"></Label>
-                <Label class="diagnosticoLabel" text="Audicion bilateral" row="1" col="1"></Label>
+                <Label class="paciente-text" text="Grado de trastorno: " ></Label>
+                <label class="paciente-text-dato" [text]="exploracionFonologica.gradoTrastorno"></label>
+                <Label class="paciente-text" text="Observaciones de diagnóstico: " textWrap="true"></Label>
+                <TextView class="paciente-text-dato" [text]="exploracionFonologica.observaciones" editable="false"></TextView>
             </StackLayout>
-            <!--  </ng-template>
-                    </ListView>-->
+
 
 
             <!-- Plan de trabajo /Collapse -->
