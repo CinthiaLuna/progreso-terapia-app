@@ -28,19 +28,19 @@ export class DetalleDiagnosticoComponent implements OnInit {
 
 
     constructor(
-        private pacienteService: PacienteService, 
-        private planTrabajoService: PlanTrabajoService, 
+        private pacienteService: PacienteService,
+        private planTrabajoService: PlanTrabajoService,
         private exploracionFonologicaService: ExploracionFonologicaService,
         private routerExtensions: RouterExtensions,
         private activedRoute : ActivatedRoute
-    ) { 
+    ) {
         this.exploracionFonologica=JSON.parse(this.activedRoute.snapshot.queryParams["exploracionFonologica"]);
         this.nombrePaciente = this.exploracionFonologica.paciente.nombrePaciente + " " + this.exploracionFonologica.paciente.apellidoPaciente;
         this.edadPaciente = this.exploracionFonologica.paciente.edadPaciente + " años";
     }
 
     ngOnInit() {
-        this.planTrabajoService.obtenerPlanTrabajoPorExploracionFonologica(this.exploracionFonologica.idExploracionFonologica).subscribe( 
+        this.planTrabajoService.obtenerPlanTrabajoPorExploracionFonologica(this.exploracionFonologica.idExploracionFonologica).subscribe(
             result => {
 
                 this.planTrabajoIndicaciones = result.indicacionesProcedimiento;
@@ -60,10 +60,10 @@ export class DetalleDiagnosticoComponent implements OnInit {
         sideDrawer.showDrawer();
     }
 
-    public showCollapseBox = false;
-    public showCollapseBox2 = false;
-    public showCollapseBox3 = false;
-    public showCollapseBox4 = false;
+    public showCollapseBox = true;
+    public showCollapseBox2 = true;
+    public showCollapseBox3 = true;
+    public showCollapseBox4 = true;
     isCollapsed = true;
     isCollapsed2 = true;
     isCollapsed3 = true;
@@ -71,7 +71,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
 
     goCollapse(args) {
         if (this.showCollapseBox) {
-            this.showCollapseBox = false;
+            this.showCollapseBox = true;
             this.isCollapsed = !this.isCollapsed;
         }
         else {
@@ -81,7 +81,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
     goCollapse2(args) {
         if (this.showCollapseBox2) {
-            this.showCollapseBox2 = false;
+            this.showCollapseBox2 = true;
             this.isCollapsed2 = !this.isCollapsed2;
         }
         else {
@@ -91,7 +91,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
     goCollapse3(args) {
         if (this.showCollapseBox3) {
-            this.showCollapseBox3 = false;
+            this.showCollapseBox3 = true;
             this.isCollapsed3 = !this.isCollapsed3;
         }
         else {
@@ -101,7 +101,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
     goCollapse4(args) {
         if (this.showCollapseBox4) {
-            this.showCollapseBox4 = false;
+            this.showCollapseBox4 = true;
             this.isCollapsed4 = !this.isCollapsed4;
         }
         else {

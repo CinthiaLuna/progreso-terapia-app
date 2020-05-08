@@ -18,7 +18,7 @@ export class PlanTrabajoService {
         let token = this.authService.token;
         if (token != null) {
             return this.httpHeaders.append('Authorization', 'Bearer ' + token);
-            
+
         }return this.httpHeaders;
 
     }

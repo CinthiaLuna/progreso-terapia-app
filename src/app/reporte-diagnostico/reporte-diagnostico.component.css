@@ -32,7 +32,7 @@
     border-color: white;
     border-width: 1 1 1 1;
 }
-.paciente-text{ 
+.paciente-text{
     size: 40;
     margin-left: 15;
 }
@@ -47,22 +47,22 @@
     margin-bottom: 5;
 }
 .paciente-text-bold{
-    padding-left: 30;
+    margin-left: 28;
     margin-top: -20;
     font-weight: bold;
 }
 .paciente-text-bold-top{
-    padding-left: 30;
+
     margin-top: 10;
     font-weight: bold;
 }
 .paciente-text-grado{
-    margin-left: -85;
+
     margin-top: 10;
 }
 .paciente-text-fecha{
     margin-top: -20;
-    margin-left: -120;
+
 }
 .fondoreporte{
     margin-top: 10;

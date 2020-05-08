@@ -10,7 +10,7 @@ import { AuthService } from "../usuarioAppMovil/auth.service";
 @Injectable()
 export class PacienteService {
     private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/paciente';
-    
+
     private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     constructor(private http: HttpClient, private routerExtensions: RouterExtensions, private authService: AuthService) { }
 
@@ -18,7 +18,7 @@ export class PacienteService {
         let token = this.authService.token;
         if (token != null) {
             return this.httpHeaders.append('Authorization', 'Bearer ' + token);
-            
+
         }return this.httpHeaders;
 
     }
