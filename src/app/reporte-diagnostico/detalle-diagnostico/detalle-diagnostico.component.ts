@@ -62,12 +62,8 @@ export class DetalleDiagnosticoComponent implements OnInit {
 
     public showCollapseBox = true;
     public showCollapseBox2 = true;
-    public showCollapseBox3 = true;
-    public showCollapseBox4 = true;
     isCollapsed = true;
     isCollapsed2 = true;
-    isCollapsed3 = true;
-    isCollapsed4 = true;
 
     goCollapse(args) {
         if (this.showCollapseBox) {
@@ -87,26 +83,6 @@ export class DetalleDiagnosticoComponent implements OnInit {
         else {
             this.showCollapseBox2 = true;
             this.isCollapsed2 = !this.isCollapsed2;
-        }
-    }
-    goCollapse3(args) {
-        if (this.showCollapseBox3) {
-            this.showCollapseBox3 = true;
-            this.isCollapsed3 = !this.isCollapsed3;
-        }
-        else {
-            this.showCollapseBox3 = true;
-            this.isCollapsed3 = !this.isCollapsed3;
-        }
-    }
-    goCollapse4(args) {
-        if (this.showCollapseBox4) {
-            this.showCollapseBox4 = true;
-            this.isCollapsed4 = !this.isCollapsed4;
-        }
-        else {
-            this.showCollapseBox4 = true;
-            this.isCollapsed4 = !this.isCollapsed4;
         }
     }
 }

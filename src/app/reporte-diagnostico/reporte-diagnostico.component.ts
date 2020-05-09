@@ -15,15 +15,11 @@ import { RouterExtensions } from "nativescript-angular/router";
     styleUrls: ["./reporte-diagnostico.component.css"]
 })
 export class ReporteDiagnosticoComponent implements OnInit {
-
     paciente: Paciente;
     exploracionesFonologicas: ExploracionFonologica[];
     nombrePaciente: string;
     numeroExpediente: string;
     edadPaciente: number;
-    fechaExploracionFonologica:string;
-    array = new Array();
-    array2 = new Array();
 
     constructor(
         private pacienteService: PacienteService, 

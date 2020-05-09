@@ -40,12 +40,12 @@
 
             <!-- Plan de trabajo /Collapse -->
             <FlexboxLayout class="item-lista" justifyContent="space-between" alignItems="center" alignContent="center">
-                <Label text="Plan de trabajo" (tap)="goCollapse4($event)" class="title">
+                <Label text="Plan de trabajo" (tap)="goCollapse2($event)" class="title">
                 </Label>
-                <Image src="res://baseline_expand_more_black_18" class="icon" [ngClass]='{ collapse: isCollapsed4 }'
-                    (tap)="goCollapse4($event)"></Image>
+                <Image src="res://baseline_expand_more_black_18" class="icon" [ngClass]='{ collapse: isCollapsed2 }'
+                    (tap)="goCollapse2($event)"></Image>
             </FlexboxLayout>
-            <StackLayout class="item-lista" [visibility]="showCollapseBox4 ? 'visible' : 'collapse'">
+            <StackLayout class="item-lista" [visibility]="showCollapseBox2 ? 'visible' : 'collapse'">
                 <Label class="paciente-text" text="Cada cuando se realiza el plan de trabajo:" textWrap="true"></Label>
                 <Label  class="paciente-text-dato" text="{{planTrabajotemporalidad}}" textWrap="true"></Label>
                 <Label  class="paciente-text" text="número de bloque: " textWrap="true"></Label>
