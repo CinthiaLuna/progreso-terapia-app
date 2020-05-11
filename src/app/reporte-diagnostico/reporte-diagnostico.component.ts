@@ -38,7 +38,7 @@ export class ReporteDiagnosticoComponent implements OnInit {
 
             }
         );
-        this.exploracionFonologicaService.obtenerExploracionFonologica().subscribe(
+        this.exploracionFonologicaService.obtenerExploracionFonologicaDesc().subscribe(
             result => {
                 this.exploracionesFonologicas = result;
             }

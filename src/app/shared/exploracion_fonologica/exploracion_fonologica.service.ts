@@ -9,7 +9,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 @Injectable()
 export class ExploracionFonologicaService {
-    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/exploracion_fonologica/paciente';
+    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/exploracion_fonologica/';
     private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient, private authService: AuthService, private routerExtensions: RouterExtensions) { }
 
@@ -23,8 +23,18 @@ export class ExploracionFonologicaService {
 
     }
 
-    obtenerExploracionFonologica(): Observable<ExploracionFonologica[]> {
-        return this.http.get(this.urlEndPoint, { headers: this.agregarAuthorizationHeaders() }).pipe(
+    obtenerExploracionFonologicaDesc(): Observable<ExploracionFonologica[]> {
+        return this.http.get(`${this.urlEndPoint}pacienteDesc`, { headers: this.agregarAuthorizationHeaders() }).pipe(
+            map(response => response as ExploracionFonologica[]),
+            catchError(error => {
+                this.isNoAuthorizado(error);
+                return throwError(error);
+            })
+        );
+    }
+    
+    obtenerExploracionFonologicaAsc(): Observable<ExploracionFonologica[]> {
+        return this.http.get(`${this.urlEndPoint}pacienteAsc`, { headers: this.agregarAuthorizationHeaders() }).pipe(
             map(response => response as ExploracionFonologica[]),
             catchError(error => {
                 this.isNoAuthorizado(error);

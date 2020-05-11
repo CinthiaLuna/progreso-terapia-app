@@ -1,29 +1,24 @@
 <ActionBar title="Pagina principal" class="barra">
-    <NavigationButton ios:visibility="collapsed" icon="res://boton_burger" (tap)="onDrawerButtonTap()">
-    </NavigationButton>
-    <ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="left"
-        (tap)="onDrawerButtonTap()">
-    </ActionItem>
-    <Label text="Progreso paciente" class="titulo"> </Label>
+	<NavigationButton ios:visibility="collapsed" icon="res://boton_burger" (tap)="onDrawerButtonTap()">
+	</NavigationButton>
+	<ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="left"
+		(tap)="onDrawerButtonTap()">
+	</ActionItem>
+	<Label text="Progreso paciente" class="titulo"> </Label>
 </ActionBar>
-<GridLayout class="fondo">
-    <!-- <ListView [items]="progresos" iosEstimatedRowHeight="65">
-        <ng-template let-progreso="item" let-i="index">-->
-    <GridLayout rows="25,25" class="contenido">
-        <Label textWrap="true" row="0">
-            <FormattedString>
-                <Span text="Bloque 4"></Span>
-            </FormattedString>
-        </Label>
-        <Label row="1">
-            <FormattedString>
-                <Span text="Fecha: Del "></Span>
-                <Span text="2018/08/30"></Span>
-                <Span text=" al "></Span>
-                <Span text="2019/10/22"></Span>
-            </FormattedString>
-        </Label>
-    </GridLayout>
-    <!--  </ng-template>
-    </ListView>-->
+<GridLayout class="fondo"></GridLayout>
+<GridLayout class="fondoreporte">
+	<label class="titulo" text="Progreso de terapia"></label>
+	<GridLayout  rows="auto, *" style="height: 1500px;">
+		<RadCartesianChart row="0" id="cartesianChart" style="height: 100%">
+			<CategoricalAxis tkCartesianVerticalAxis labelSize="40" labelMargin="10"></CategoricalAxis>
+			<LinearAxis tkCartesianHorizontalAxis  labelLayoutMode="111" maximum="3" majorStep="1" labelFormat="%.0f"></LinearAxis>
+			<BarSeries tkCartesianSeries  paletteMode="items" [items]="this.exploracionesFonologicas"
+				categoryProperty="fechaExploracionFonlogica" valueProperty="gradoNumero" seriesName="Progreso del paciente">
+			</BarSeries>
+		</RadCartesianChart>		
+	</GridLayout>
+	<Label text="Rangos:" textWrap="true"></Label>
+	
 </GridLayout>
+

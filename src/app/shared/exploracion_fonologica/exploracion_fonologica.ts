@@ -20,4 +20,6 @@ export class ExploracionFonologica {
     silabaFinal: boolean;
     silabaInicial: boolean;
     silabaIntermedia: boolean;
+    gradoNumero: number;
+    nivelNumero: number;
 }

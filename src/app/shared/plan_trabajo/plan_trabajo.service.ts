@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { map, catchError } from "rxjs/operators";
 import { throwError, Observable } from "rxjs";
-import { PlanTrabajo } from "./plan_trabajo.";
+import { PlanTrabajo } from "./plan_trabajo";
 import { AuthService } from "../usuarioAppMovil/auth.service";
 import { RouterExtensions } from "nativescript-angular/router";
 

@@ -1,0 +1,17 @@
+.fondoreporte{
+    margin-top: 10;
+    margin-left: 10;
+    margin-bottom: 20;
+    margin-right: 20;
+    border-radius: 5;
+    background-color: white;
+    opacity: 0.9;
+}
+BarSeries {
+    fill-color: #C8A1FF;
+    stroke-color: white;
+    stroke-width: 4;
+}
+BarSeries[index=1] {
+    fill-color: #6215EE;
+}
