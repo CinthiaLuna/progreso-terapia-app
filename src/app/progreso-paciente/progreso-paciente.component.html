@@ -1,24 +1,34 @@
 <ActionBar title="Pagina principal" class="barra">
 	<NavigationButton ios:visibility="collapsed" icon="res://boton_burger" (tap)="onDrawerButtonTap()">
 	</NavigationButton>
-	<ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="left"
+	<ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="right"
 		(tap)="onDrawerButtonTap()">
 	</ActionItem>
+	<ActionItem tap="onSave" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"></ActionItem>
 	<Label text="Progreso paciente" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>
+
 <GridLayout class="fondoreporte">
-	<label class="titulo" text="Progreso de terapia"></label>
-	<GridLayout  rows="auto, *" style="height: 1500px;">
-		<RadCartesianChart row="0" id="cartesianChart" style="height: 100%">
-			<CategoricalAxis tkCartesianVerticalAxis labelSize="40" labelMargin="10"></CategoricalAxis>
-			<LinearAxis tkCartesianHorizontalAxis  labelLayoutMode="111" maximum="3" majorStep="1" labelFormat="%.0f"></LinearAxis>
-			<BarSeries tkCartesianSeries  paletteMode="items" [items]="this.exploracionesFonologicas"
-				categoryProperty="fechaExploracionFonlogica" valueProperty="gradoNumero" seriesName="Progreso del paciente">
-			</BarSeries>
-		</RadCartesianChart>		
-	</GridLayout>
-	<Label text="Rangos:" textWrap="true"></Label>
-	
+	<GridLayout  rows="auto,auto,*" style="height: 3000px;">
+		<StackLayout row="0" class="paciente">
+			<Label text="DATOS GENERALES DEL PACIENTE " class="paciente-titulo"></Label>
+			<Label class="paciente-text" text="Nombre del paciente: {{nombrePaciente}}" ></Label>
+			<Label class="paciente-text" text="Número de expediente: {{numeroExpediente}}" ></Label>
+			<Label class="paciente-text-bottom" text="Edad: {{edadPaciente}} Años"></Label>
+		</StackLayout>
+		<StackLayout row="1" class="rango">
+			<Label class="t-t-r" text="RANGOS DE PROGRESO"></Label>
+			<Label class="t-text-r" text="1 = Balbucea (Severo)" ></Label>
+			<Label class="t-text-r" text="7 = Realiza oraciones completas (Ideal)" ></Label>
+		</StackLayout>
+		<RadCartesianChart row ="2">
+			<CategoricalAxis tkCartesianVerticalAxis></CategoricalAxis>
+			<LinearAxis  maximum="7" majorStep="1" labelFormat="%.0f" tkCartesianHorizontalAxis></LinearAxis>
+			<BarSeries tkCartesianSeries [items]="this.exploracionesFonologicas" categoryProperty="fechaExploracionFonlogica" valueProperty="nivelNumero"></BarSeries>
+			<!--<LineSeries tkCartesianSeries [items]="this.exploracionesFonologicas" categoryProperty="fechaExploracionFonlogica" valueProperty="nivelNumero"></LineSeries>-->
+		</RadCartesianChart>
+	</GridLayout>	
+
 </GridLayout>
 

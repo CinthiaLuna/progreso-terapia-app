@@ -41,10 +41,7 @@ export class ProgresoPacienteComponent {
                 this.exploracionesFonologicas = result;
             }
         );
-    }
-    mostrarText(){
-        this.grao="severo"
-    }
+    } 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();

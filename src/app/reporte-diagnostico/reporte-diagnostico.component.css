@@ -33,34 +33,36 @@
     border-width: 1 1 1 1;
 }
 .paciente-text{
-    size: 40;
+    font-size: 14px;
     margin-left: 15;
 }
 .paciente-text-top{
-    size: 40;
+    font-size: 14px;
     margin-left: 15;
     margin-top: 5;
 }
 .paciente-text-bottom{
-    size: 40;
+    font-size: 14px;
     margin-left: 15;
     margin-bottom: 5;
 }
 .paciente-text-bold{
+    font-size: 14px;
     margin-left: 28;
     margin-top: -20;
     font-weight: bold;
 }
 .paciente-text-bold-top{
-
+    font-size: 14px;
     margin-top: 10;
     font-weight: bold;
 }
 .paciente-text-grado{
-
+    font-size: 14px;
     margin-top: 10;
 }
 .paciente-text-fecha{
+    font-size: 14px;
     margin-top: -20;
 
 }

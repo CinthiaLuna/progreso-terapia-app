@@ -7,6 +7,11 @@
     margin-bottom: 10;
     margin-right: 5;
 }
+.paciente-titulo{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10;
+}
 
 .diagnosticoLabel {
     padding-left: 25;
@@ -33,22 +38,22 @@
     border-width: 1 1 1 1;
 }
 .paciente-text{ 
-    size: 50;
+    font-size: 14px;
     font-weight: bold;
     margin-left: 15;
 }
 .paciente-text-top{
-    size: 50;
+    font-size: 14px;
     font-weight: bold;
     margin-left: 20;
     margin-top: 10;
 }
 .paciente-text-dato{
-    size:50;
+    font-size: 13px;
     margin-left: 50;
 }
 .paciente-text-dato-bottom{
-    size:50;
+    font-size: 13px;
     margin-left: 50;
     margin-bottom: 10;
 }

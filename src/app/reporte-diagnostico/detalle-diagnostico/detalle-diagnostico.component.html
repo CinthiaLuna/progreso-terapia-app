@@ -4,6 +4,7 @@
     <ActionItem icon="res://baseline_arrow_back_white_18" android:visibility="collapsed" ios.position="left"
         (tap)="onNavigate()">
     </ActionItem>
+    <ActionItem tap="onSave" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"></ActionItem>
     <Label text="Reporte de diagnóstico" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo">
@@ -13,6 +14,7 @@
     <ScrollView>
         <StackLayout class ="fondoreporte">
             <StackLayout class="paciente">
+                <Label text="Datos generales del paciente: " class="paciente-titulo"></Label>
                 <Label class="paciente-text-top" text="Fecha de exploracion: " ></Label>
                 <Label class="paciente-text-dato" [text]="exploracionFonologica.fechaExploracionFonlogica" ></Label>
                 <Label class="paciente-text" text="Nombre del paciente: " ></Label>

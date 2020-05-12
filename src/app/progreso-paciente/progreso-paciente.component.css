@@ -1,17 +1,66 @@
+LineSeries{
+    stroke-color: rgb(108, 175, 108);
+}
+BarSeries {
+    fill-color: rgb(108, 175, 108);
+    stroke-color: rgb(108, 175, 108);
+}
+.paciente-titulo{
+    font-size: 15px;
+    margin-left: 10;
+    margin-top: 5;
+}
 .fondoreporte{
     margin-top: 10;
     margin-left: 10;
-    margin-bottom: 20;
     margin-right: 20;
+    margin-bottom: 10;
     border-radius: 5;
     background-color: white;
     opacity: 0.9;
 }
-BarSeries {
-    fill-color: #C8A1FF;
-    stroke-color: white;
-    stroke-width: 4;
+.paciente {
+    background-color: black;
+    color: white;
+    border-radius: 5;
+    margin-left: 5;
+    margin-top: 5;
+    margin-right: 5;
+    margin-bottom: 5;
 }
-BarSeries[index=1] {
-    fill-color: #6215EE;
+.rango{
+    margin-top: 5;
+    margin-left: 20;
+    margin-right: 20;
+    margin-bottom: 20;
+    border-color: #959699;
+    border-radius: 5;
+    height: 70;
+    border-width: 2 2 2 2;
+    background-color:white;
+
+}
+.paciente-text{ 
+    font-size: 14px;
+    margin-left: 25;
+}
+.paciente-text-bottom{
+    font-size: 13px;
+    margin-left: 25;
+    margin-bottom: 10;
+}
+.t-t-r{
+    font-weight: bold;
+    text-align: center;
+}
+.t-text-r{
+    margin-left: 10;
+}
+.botonPDF {
+    width: 200px;
+    height: 200px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 200px;
 }
