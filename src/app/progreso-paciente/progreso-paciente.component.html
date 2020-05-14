@@ -4,7 +4,7 @@
 	<ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="right"
 		(tap)="onDrawerButtonTap()">
 	</ActionItem>
-	<ActionItem tap="onSave" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"></ActionItem>
+	<ActionItem tap="onSave" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right" (tap)="generatePDF()"></ActionItem>
 	<Label text="Progreso paciente" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>

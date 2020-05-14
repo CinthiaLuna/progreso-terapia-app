@@ -7,6 +7,26 @@ import { PacienteService } from "../shared/paciente/paciente.service";
 import { ExploracionFonologica } from "../shared/exploracion_fonologica/exploracion_fonologica";
 import { Paciente } from "../shared/paciente/paciente";
 import { getLocaleNumberFormat } from "@angular/common";
+global['window'] = {
+    'document': {
+        'createElementNS': () => { return {} }
+    }
+};
+global['document'] = {
+    'createElement': (str) => { return {} }
+};
+global['navigator'] = {};
+const base64 = require('../base-64');
+const utf8 = require('../utf8');
+const jsPDF = require('../jspdf')
+const clipboard = require("../nativescript-clipboard")
+const dialogs = require("ui/dialogs")
+
+global['btoa'] = (str) => {
+    var bytes = utf8.encode(str);
+    return base64.encode(bytes);
+};
+
 
 @Component({
     selector: "ns-progreso-paciente",
@@ -45,5 +65,21 @@ export class ProgresoPacienteComponent {
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
+    }
+    generatePDF() {
+
+        var doc = new jsPDF('p', 'pt');
+        doc.setFontSize(26);
+        doc.text(40, 40, "My first PDF with NativeScript!");
+
+        var base64 = doc.output('datauristring')
+        
+        dialogs.alert({
+            title: "Progreso paciente",
+            message: "Click en copiar y pegalo en tu navegador",
+            okButtonText: "Copiar ruta"
+        }).then(() => {
+            clipboard.setText(base64)
+        });
     }
 }

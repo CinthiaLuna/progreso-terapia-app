@@ -1,0 +1,29 @@
+{
+  "name": "nativescript-clipboard",
+  "version": "1.1.7",
+  "description": "A clipboard plugin for use in NativeScript apps. You can copy and paste text from and to the clipboard.",
+  "main": "clipboard",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "ios": "2.3.0",
+      "android": "2.3.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eddyverbruggen/nativescript-clipboard.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "Clipboard",
+    "Pasteboard",
+    "Copy",
+    "Paste",
+    "Copy-Paste"
+  ],
+  "author": "Eddy Verbruggen <eddyverbruggen@gmail.com> (https://github.com/EddyVerbruggen)",
+  "license": "MIT",
+  "bugs": "https://github.com/eddyverbruggen/nativescript-clipboard/issues",
+  "homepage": "https://github.com/eddyverbruggen/nativescript-clipboard"
+}
