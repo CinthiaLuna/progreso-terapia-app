@@ -7,7 +7,7 @@ import { ExploracionFonologicaService } from "~/app/shared/exploracion_fonologic
 import { PacienteService } from "~/app/shared/paciente/paciente.service";
 import { ActivatedRoute } from "@angular/router";
 import { PlanTrabajoService } from "~/app/shared/plan_trabajo/plan_trabajo.service";
-import { PlanTrabajo } from "~/app/shared/plan_trabajo/plan_trabajo";
+import { PlanTrabajo } from "~/app/shared/plan_trabajo/plan_trabajo.";
 
 declare var jsPDF: any;
 
@@ -42,6 +42,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
     ngOnInit() {
         this.planTrabajoService.obtenerPlanTrabajoPorExploracionFonologica(this.exploracionFonologica.idExploracionFonologica).subscribe(
             result => {
+
                 this.planTrabajoIndicaciones = result.indicacionesProcedimiento;
                 this.planTrabajotemporalidad = result.temporalidad;
                 this.planTrabajonumeroSesiones = result.numeroSesiones;
@@ -60,13 +61,13 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
 
     public showCollapseBox = true;
-    public showCollapseBox2 = true;
+    public showCollapseBox2 = true ;
     isCollapsed = true;
     isCollapsed2 = true;
 
     goCollapse(args) {
         if (this.showCollapseBox) {
-            this.showCollapseBox = true;
+            this.showCollapseBox = false;
             this.isCollapsed = !this.isCollapsed;
         }
         else {
@@ -76,7 +77,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
     goCollapse2(args) {
         if (this.showCollapseBox2) {
-            this.showCollapseBox2 = true;
+            this.showCollapseBox2 = false;
             this.isCollapsed2 = !this.isCollapsed2;
         }
         else {
