@@ -3,6 +3,9 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { ReporteCitasRoutingModule } from "./reporte-citas-routing.module";
 import { ReporteCitasComponent } from "./reporte-citas.component";
 import { NativeScriptUIChartModule } from "nativescript-ui-chart/angular"
+import { CitaService } from "../shared/cita/cita.service";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular/listview-directives";
+import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular/calendar-directives";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -11,9 +14,15 @@ import { NativeScriptUIChartModule } from "nativescript-ui-chart/angular"
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
-    imports: [ReporteCitasRoutingModule, NativeScriptCommonModule, NativeScriptUIChartModule],
+    imports: [
+        ReporteCitasRoutingModule, 
+        NativeScriptCommonModule, 
+        NativeScriptUIChartModule, 
+        NativeScriptUIListViewModule,
+        NativeScriptUICalendarModule
+    ],
     declarations: [ReporteCitasComponent],
-    providers: [],
+    providers: [CitaService],
     schemas: [NO_ERRORS_SCHEMA]
 })
 /*

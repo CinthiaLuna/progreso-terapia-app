@@ -1,0 +1,88 @@
+.paciente {
+    background-color: black;
+    color: white;
+    border-radius: 5;
+    margin-left: 5;
+    margin-top: 5;
+    margin-bottom: 10;
+    margin-right: 5;
+}
+
+.diagnosticoLabel {
+    padding-left: 25;
+}
+
+.title {
+    font-size: 23;
+
+}
+
+.icon{
+    height: 24;
+    width: 80;
+    transition: .3s transform ease-in-out;
+}
+
+.collapse{
+
+    transform: rotate(270deg);
+  }
+.ficha{
+    border-radius: 10;
+    border-color: white;
+    border-width: 1 1 1 1;
+}
+.paciente-text{
+    font-size: 14px;
+    margin-left: 15;
+}
+.paciente-text-top{
+    font-size: 14px;
+    margin-left: 15;
+    margin-top: 5;
+}
+.paciente-text-bottom{
+    font-size: 14px;
+    margin-left: 15;
+    margin-bottom: 5;
+}
+.paciente-text-bold{
+    font-size: 14px;
+    margin-left: 28;
+    margin-top: -20;
+    font-weight: bold;
+}
+.paciente-text-bold-top{
+    font-size: 14px;
+    margin-top: 10;
+    font-weight: bold;
+}
+.paciente-text-grado{
+    font-size: 14px;
+    margin-top: 10;
+}
+.paciente-text-fecha{
+    font-size: 14px;
+    margin-top: -20;
+
+}
+.fondoreporte{
+    margin-top: 10;
+    margin-left: 10;
+    margin-bottom: 20;
+    margin-right: 10;
+    border-radius: 5;
+    background-color: white;
+    opacity: 0.9;
+}
+.lista{
+    height: 80;
+    margin-top: 5;
+    margin-left: 20;
+    margin-bottom: 5;
+    margin-right: 20;
+    background-color:black;
+    color: #ffffff;
+    opacity: 0.8;
+    border-radius: 5;
+}

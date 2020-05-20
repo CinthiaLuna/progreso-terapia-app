@@ -13,7 +13,8 @@
 	<GridLayout  rows="auto,auto,*,auto" style="height: 4000px;">
 		<StackLayout row="0" class="paciente">
 			<Label text="DATOS GENERALES DEL PACIENTE " class="paciente-titulo"></Label>
-			<Label class="paciente-text" text="Nombre del paciente: {{nombrePaciente}}" ></Label>
+			<Label class="paciente-text" text="Nombre del paciente:" ></Label>
+			<Label class="paciente-text" text="{{nombrePaciente}}" ></Label>
 			<Label class="paciente-text" text="Número de expediente: {{numeroExpediente}}" ></Label>
 			<Label class="paciente-text-bottom" text="Edad: {{edadPaciente}} Años"></Label>
 		</StackLayout>
@@ -26,12 +27,11 @@
 		<RadCartesianChart>
 			<CategoricalAxis tkCartesianVerticalAxis></CategoricalAxis>
 			<LinearAxis  maximum="7" majorStep="1" labelFormat="%.0f" tkCartesianHorizontalAxis></LinearAxis>
-			<BarSeries tkCartesianSeries [items]="this.exploracionesFonologicas" categoryProperty="fechaExploracionFonlogica" valueProperty="nivelNumero"></BarSeries>
-			<!--<LineSeries tkCartesianSeries [items]="this.exploracionesFonologicas" categoryProperty="fechaExploracionFonlogica" valueProperty="nivelNumero"></LineSeries>-->
+			<LineSeries tkCartesianSeries [items]="this.exploracionesFonologicas" categoryProperty="fechaExploracionFonlogica" valueProperty="nivelNumero"></LineSeries>
 		</RadCartesianChart>
 		</StackLayout>
-		<StackLayout row="3">
-			<Label textWrap="true" class="t-text-r" text="*La información proporcionada es responsabilidad del médico especialista" ></Label>
+		<StackLayout row="3" >
+			<Label textWrap="true" class="nota" text="* La información proporcionada es responsabilidad del médico especialista" ></Label>
 		</StackLayout>
 	</GridLayout>
 

@@ -86,3 +86,8 @@
     opacity: 0.8;
     border-radius: 5;
 }
+.paciente-titulo{
+    font-size: 15px;
+    margin-left: 10;
+    margin-top: 5;
+}

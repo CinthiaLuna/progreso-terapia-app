@@ -3,6 +3,9 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import * as calendarModule from "nativescript-ui-calendar";
 import { Color } from "tns-core-modules/color";
+import { CitaService } from "../shared/cita/cita.service";
+import { RouterExtensions } from "nativescript-angular/router";
+import { Cita } from "../shared/cita/cita";
 
 @Component({
     selector: "ns-reporte-citas",
@@ -10,6 +13,7 @@ import { Color } from "tns-core-modules/color";
     styleUrls: ["./reporte-citas.component.css"]
 })
 export class ReporteCitasComponent {
+    citasPorBloque : Cita[];
 
     calendarEvents = [];
 //Datos para generar la grafica de progreso
@@ -27,7 +31,7 @@ export class ReporteCitasComponent {
             }
         ]
 
-    constructor() {
+    constructor( private routerExtensions: RouterExtensions, private citaService: CitaService) {
           // Datos para el calendario
           let events = [];
           let now = new Date();
@@ -47,7 +51,13 @@ export class ReporteCitasComponent {
           this.calendarEvents = events;
      }
 
-    ngOnInit(): void {
+    ngOnInit() {
+        this.citaService.obtenerCitasPorBloque().subscribe(
+            result => {
+                this.citasPorBloque = result;
+                console.log(this.citasPorBloque);
+            }
+        );
     }
 
     onDrawerButtonTap(): void {

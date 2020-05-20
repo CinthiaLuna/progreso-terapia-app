@@ -4,10 +4,10 @@
     <ActionItem icon="res://baseline_arrow_back_white_18" android:visibility="collapsed" ios.position="left"
         (tap)="onNavigate()">
     </ActionItem>
+    <ActionItem tap="onSave" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right" (tap)="generatePDF()"></ActionItem>
     <Label text="Reporte de diagnóstico" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo">
-
 </GridLayout>
 <GridLayout>
     <ScrollView>

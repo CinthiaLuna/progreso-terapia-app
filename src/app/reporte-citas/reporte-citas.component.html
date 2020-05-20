@@ -29,20 +29,21 @@
                 (navigatingToDateStarted)="onNavigatingToDateStarted($event)"
                 (viewModeChanged)="onViewModeChanged($event)"></RadCalendar>
         </StackLayout>
-        <StackLayout
+        <!--Listado de citas -->
+        <ScrollView
             *tabItem="{title: 'Lista de citas', iconSource: '~/images/icons/reporte-citas/listacitas.png', textTransform: 'lowercase', tabBackgroundColor: 'red'}">
-            <!-- <ListView [items]="reporteCitas" >
-            <ng-template let-item="item">-->
-            <GridLayout columns="80,50,200,50" rows="28,28">
-                <Label row="0" col="0" text="14/02/2020"></Label>
-                <Label row="0" class="lista" col="1" text="LFT18"></Label>
-                <Label row="0" class="lista" col="2" text="Jose Carlos Huerta Gonzales"></Label>
-
-                <Label row="1" class="lista" col="1" text="12:00"> </Label>
-                <Label row="1" class="lista" col="2" text="13:30"></Label>
-            </GridLayout>
-            <!--   </ng-template>
-        </ListView>-->
-        </StackLayout>
+            <StackLayout class="fondoreporte">
+                <RadListView [items]="citasPorBloque">
+                    <ng-template let-item="item">
+                        <GridLayout class="lista" rows="*,*" columns="30, auto, *">
+                            <label row="0" col="1" class="paciente-text-bold-top" text="Tipo de cita:"></label>
+                            <Label row="0" col="2" class="paciente-text-grado" [text]="item.tipoCita"></Label>
+                            <label row="1" col="1" class="paciente-text-bold" text="Fecha:"></label>
+                            <Label row="1" col="2" class="paciente-text-fecha" [text]="item.fechaCita"></Label>
+                        </GridLayout>
+                    </ng-template>
+                </RadListView>   
+            </StackLayout>
+        </ScrollView>
     </TabView>
 </GridLayout>

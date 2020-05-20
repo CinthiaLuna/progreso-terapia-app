@@ -9,7 +9,26 @@ import { ActivatedRoute } from "@angular/router";
 import { PlanTrabajoService } from "~/app/shared/plan_trabajo/plan_trabajo.service";
 import { PlanTrabajo } from "~/app/shared/plan_trabajo/plan_trabajo";
 
-declare var jsPDF: any;
+global['window'] = {
+    'document': {
+        'createElementNS': () => { return {} }
+    }
+};
+global['document'] = {
+    'createElement': (str) => { return {} }
+};
+global['navigator'] = {};
+
+const base64 = require('../../base-64');
+const utf8 = require('../../utf8');
+const jsPDF = require('../../jspdf')
+const clipboard = require("../../nativescript-clipboard")
+const dialogs = require("ui/dialogs")
+
+global['btoa'] = (str) => {
+    var bytes = utf8.encode(str);
+    return base64.encode(bytes);
+};
 
 @Component({
     selector: "ns-detalle-reporte",
@@ -84,5 +103,23 @@ export class DetalleDiagnosticoComponent implements OnInit {
             this.showCollapseBox2 = true;
             this.isCollapsed2 = !this.isCollapsed2;
         }
+    }
+
+    generatePDF() {
+
+        var doc = new jsPDF('p', 'pt');
+        doc.setFontSize(26);
+        doc.text(40, 40, "My first PDF with NativeScript!");
+        doc.text(20,20,"this.exploracionFonologica");
+
+        var base64 = doc.output('datauristring')
+        
+        dialogs.alert({
+            title: "PDF - Base64",
+            message: base64,
+            okButtonText: "Copy text"
+        }).then(() => {
+            clipboard.setText(base64)
+        });
     }
 }

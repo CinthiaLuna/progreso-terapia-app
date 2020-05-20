@@ -1,10 +1,8 @@
 LineSeries{
-    stroke-color: rgb(108, 175, 108);
+    stroke-color: rgb(46, 138, 46);
+    stroke-width: 5;
 }
-BarSeries {
-    fill-color: rgb(108, 175, 108);
-    stroke-color: rgb(108, 175, 108);
-}
+
 .paciente-titulo{
     font-size: 15px;
     margin-left: 10;
@@ -63,4 +61,8 @@ BarSeries {
     font-size: 24px;
     line-height: 1.33;
     border-radius: 200px;
+}
+.nota{
+    margin-left: 20;
+    font-weight: bold;
 }
