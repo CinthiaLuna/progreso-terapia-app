@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export class Cita {
     idCita: number;
     bloque: number;
@@ -6,4 +8,5 @@ export class Cita {
     tipoCita: String;
     fechaCita: Date;
     idSeguimiento: string;
+    hora: Time;
 }

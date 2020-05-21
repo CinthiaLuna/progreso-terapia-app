@@ -86,3 +86,14 @@
     opacity: 0.8;
     border-radius: 5;
 }
+.asistencia{
+    color: #9DCA56;
+
+}
+.faltas{
+    color: #f43f1f;
+
+}
+.listaAsistencia{
+    background-color: yellowgreen;
+}

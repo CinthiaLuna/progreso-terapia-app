@@ -6,6 +6,7 @@ import { Color } from "tns-core-modules/color";
 import { CitaService } from "../shared/cita/cita.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Cita } from "../shared/cita/cita";
+import { ProgresoCita } from "../shared/cita/progreso_cita";
 
 @Component({
     selector: "ns-reporte-citas",
@@ -14,24 +15,13 @@ import { Cita } from "../shared/cita/cita";
 })
 export class ReporteCitasComponent {
     citasPorBloque : Cita[];
-
+    progresoCitas: ProgresoCita;
+    asistencias: number;
+    faltas: number;
+    sesionEvaluada: number;
+    bloqueMayor: number;
     calendarEvents = [];
-//Datos para generar la grafica de progreso
-    citas: {Citas: string, Cantidad: number }[] = [{
-        Citas: "Citas de asistencia",
-                Cantidad: 3
-            },
-            {
-                Citas: "Citas perdidas",
-                Cantidad: 1
-            },
-            {
-                Citas: "Citas restantes",
-                Cantidad: 8
-            }
-        ]
-
-    constructor( private routerExtensions: RouterExtensions, private citaService: CitaService) {
+    constructor(private routerExtensions: RouterExtensions, private citaService: CitaService) {
           // Datos para el calendario
           let events = [];
           let now = new Date();
@@ -48,6 +38,7 @@ export class ReporteCitasComponent {
                   events.push(event);
               }
           }
+
           this.calendarEvents = events;
      }
 
@@ -55,9 +46,17 @@ export class ReporteCitasComponent {
         this.citaService.obtenerCitasPorBloque().subscribe(
             result => {
                 this.citasPorBloque = result;
-                console.log(this.citasPorBloque);
             }
         );
+        this.citaService.obtenerProgresoCitas().subscribe(
+            result => {
+                this.asistencias = result.asistencias;
+                this.faltas = result.faltas + result.asistencias;
+                this.sesionEvaluada = result.sesionEvaluada;
+                this.bloqueMayor = result.mayor;
+
+            }
+        )
     }
 
     onDrawerButtonTap(): void {

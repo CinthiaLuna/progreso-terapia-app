@@ -6,6 +6,7 @@ import { NativeScriptUIChartModule } from "nativescript-ui-chart/angular"
 import { CitaService } from "../shared/cita/cita.service";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular/listview-directives";
 import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular/calendar-directives";
+import { NativeScriptUIGaugeModule } from "nativescript-ui-gauge/angular";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -19,7 +20,8 @@ import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular/c
         NativeScriptCommonModule, 
         NativeScriptUIChartModule, 
         NativeScriptUIListViewModule,
-        NativeScriptUICalendarModule
+        NativeScriptUICalendarModule,
+        NativeScriptUIGaugeModule
     ],
     declarations: [ReporteCitasComponent],
     providers: [CitaService],

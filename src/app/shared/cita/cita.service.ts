@@ -5,6 +5,7 @@ import { throwError, Observable } from "rxjs";
 import { AuthService } from "../usuarioAppMovil/auth.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Cita } from "./cita";
+import { ProgresoCita } from "./progreso_cita";
 
 
 @Injectable()
@@ -26,6 +27,16 @@ export class CitaService {
     obtenerCitasPorBloque(): Observable<Cita[]> {
         return this.http.get(this.urlEndPoint, {headers: this.agregarAuthorizationHeaders() }).pipe(
             map(response => response as Cita[]),
+            catchError(error => {
+                this.isNoAuthorizado(error);
+                return throwError(error);
+            })
+        );
+    }
+
+    obtenerProgresoCitas(): Observable<ProgresoCita>{
+        return this.http.get(`${this.urlEndPoint}/progreso_cita`, {headers: this.agregarAuthorizationHeaders() }).pipe(
+            map(response => response as ProgresoCita),
             catchError(error => {
                 this.isNoAuthorizado(error);
                 return throwError(error);

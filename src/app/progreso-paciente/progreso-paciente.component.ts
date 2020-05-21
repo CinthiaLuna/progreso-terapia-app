@@ -39,8 +39,6 @@ export class ProgresoPacienteComponent {
     nombrePaciente: string;
     numeroExpediente: string;
     edadPaciente: number;
-    grao:string;
-
 
     constructor( private pacienteService: PacienteService, 
         private exploracionFonologicaService: ExploracionFonologicaService,
