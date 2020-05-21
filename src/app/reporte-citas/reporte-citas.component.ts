@@ -14,6 +14,7 @@ import { Cita } from "../shared/cita/cita";
 })
 export class ReporteCitasComponent {
     citasPorBloque : Cita[];
+    valor = ''
 
     calendarEvents = [];
 //Datos para generar la grafica de progreso
@@ -33,7 +34,7 @@ export class ReporteCitasComponent {
 
     constructor( private routerExtensions: RouterExtensions, private citaService: CitaService) {
           // Datos para el calendario
-          let events = [];
+          /*let events = [];
           let now = new Date();
           let startDate;
           let endDate;
@@ -48,6 +49,33 @@ export class ReporteCitasComponent {
                   events.push(event);
               }
           }
+          this.calendarEvents = events;*/
+
+          let events = [];
+
+
+          var startDate = new Date('2020-05-5');
+          var endDate = new Date('2020-05-5');
+          var event = new calendarModule.CalendarEvent('Terapia 2', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+
+          var startDate = new Date('2020-05-9');
+          var endDate = new Date('2020-05-9');
+          var event = new calendarModule.CalendarEvent('Terapia 3', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+
+          var startDate = new Date('10-mayo-2020');
+          startDate.getTimezoneOffset();
+          var endDate = new Date('10-mayo-2020');
+          endDate.getTimezoneOffset();
+          var event = new calendarModule.CalendarEvent('Terapia 1', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+
+          var startDate = new Date('13-mayo-2020');
+          var endDate = new Date('13-mayo-2020');
+          var event = new calendarModule.CalendarEvent('Terapia 1', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+
           this.calendarEvents = events;
      }
 
@@ -84,4 +112,5 @@ export class ReporteCitasComponent {
     onViewModeChanged(args) {
         console.log("onViewModeChanged: " + args.newValue);
     }
+
 }
