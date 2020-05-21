@@ -16,15 +16,17 @@
             <label text="Bloque actual: {{bloqueMayor}}"></label>
             <StackLayout class="paciente">
                 <label class="asistencia" text="Asistencias"></label>
-                <label class="faltas" text="Faltas" ></label>
+                <label class="faltas" text="Faltas"></label>
             </StackLayout>
             <RadRadialGauge>
                 <RadialScale tkRadialGaugeScales minimum="1" maximum="12" radius="0.90">
-                    <ScaleStyle tkRadialScaleStyle majorTicksCount="1" minorTicksCount="1" lineThickness="0" labelsCount="12" ticksOffset="0"></ScaleStyle>
+                    <ScaleStyle tkRadialScaleStyle majorTicksCount="1" minorTicksCount="1" lineThickness="0"
+                        labelsCount="12" ticksOffset="0"></ScaleStyle>
                     <RadialBarIndicator tkRadialScaleIndicators minimum="1" maximum="{{asistencias}}" location="0.97">
                         <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#9DCA56"></BarIndicatorStyle>
                     </RadialBarIndicator>
-                    <RadialBarIndicator tkRadialScaleIndicators minimum="{{asistencias}}" maximum="{{faltas}}" location="0.97">
+                    <RadialBarIndicator tkRadialScaleIndicators minimum="{{asistencias}}" maximum="{{faltas}}"
+                        location="0.97">
                         <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#f43f1f"></BarIndicatorStyle>
                     </RadialBarIndicator>
                     <RadialNeedle tkRadialScaleIndicators value="{{sesionEvaluada}}"></RadialNeedle>
@@ -45,13 +47,15 @@
             <StackLayout class="fondoreporte">
                 <RadListView [items]="citasPorBloque">
                     <ng-template let-item="item">
-                        <GridLayout rows="*,*" columns="30, auto, *">
-                        <GridLayout class="lista" [ngStyle]="{ 'background-color': item.asistenciaCita === true ? 'green' : (item.asistenciaCita === null ? 'gray': 'red' )}" rows="*,*" columns="30, auto, *">
-                            <label row="0" col="1" class="paciente-text-bold-top" text="Tipo de cita:"></label>
-                            <Label row="0" col="2" class="paciente-text-grado" [text]="item.tipoCita"></Label>
-                            <label row="1" col="1" class="paciente-text-bold" text="Fecha:"></label>
-                            <Label row="1" col="2" class="paciente-text-fecha" [text]="item.fechaCita"></Label>
-                        </GridLayout>
+
+                            <GridLayout class="lista"
+                                [ngStyle]="{ 'background-color': item.asistenciaCita === true ? 'green' : (item.asistenciaCita === null ? 'gray': 'red' )}"
+                                rows="*,*" columns="30, auto, *">
+                                <label row="0" col="1" class="paciente-text-bold-top" text="Tipo de cita:"></label>
+                                <Label row="0" col="2" class="paciente-text-grado" [text]="item.tipoCita"></Label>
+                                <label row="1" col="1" class="paciente-text-bold" text="Fecha:"></label>
+                                <Label row="1" col="2" class="paciente-text-fecha" [text]="item.fechaCita"></Label>
+                            </GridLayout>
                     </ng-template>
                 </RadListView>
             </StackLayout>
