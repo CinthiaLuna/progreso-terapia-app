@@ -45,11 +45,8 @@
             <StackLayout class="fondoreporte">
                 <RadListView [items]="citasPorBloque">
                     <ng-template let-item="item">
-<<<<<<< HEAD
-                        <GridLayout [ngClass]="{item.asistenciaCita ? 'true': 'listaAsistencia'}" rows="*,*" columns="30, auto, *">
-=======
+                        <GridLayout rows="*,*" columns="30, auto, *">
                         <GridLayout class="lista" [ngStyle]="{ 'background-color': item.asistenciaCita === true ? 'green' : (item.asistenciaCita === null ? 'gray': 'red' )}" rows="*,*" columns="30, auto, *">
->>>>>>> 8b621277a428830c15ee3dbbb3f032e204e907db
                             <label row="0" col="1" class="paciente-text-bold-top" text="Tipo de cita:"></label>
                             <Label row="0" col="2" class="paciente-text-grado" [text]="item.tipoCita"></Label>
                             <label row="1" col="1" class="paciente-text-bold" text="Fecha:"></label>
