@@ -15,15 +15,20 @@ import { ProgresoCita } from "../shared/cita/progreso_cita";
 })
 export class ReporteCitasComponent {
     citasPorBloque : Cita[];
+<<<<<<< HEAD
     progresoCitas: ProgresoCita;
     asistencias: number;
     faltas: number;
     sesionEvaluada: number;
     bloqueMayor: number;
+=======
+    valor = ''
+
+>>>>>>> 8b621277a428830c15ee3dbbb3f032e204e907db
     calendarEvents = [];
     constructor(private routerExtensions: RouterExtensions, private citaService: CitaService) {
           // Datos para el calendario
-          let events = [];
+          /*let events = [];
           let now = new Date();
           let startDate;
           let endDate;
@@ -38,6 +43,35 @@ export class ReporteCitasComponent {
                   events.push(event);
               }
           }
+<<<<<<< HEAD
+=======
+          this.calendarEvents = events;*/
+
+          let events = [];
+
+
+          var startDate = new Date('2020-05-5');
+          var endDate = new Date('2020-05-5');
+          var event = new calendarModule.CalendarEvent('Terapia 2', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+
+          var startDate = new Date('2020-05-9');
+          var endDate = new Date('2020-05-9');
+          var event = new calendarModule.CalendarEvent('Terapia 3', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+
+          var startDate = new Date('10-mayo-2020');
+          startDate.getTimezoneOffset();
+          var endDate = new Date('10-mayo-2020');
+          endDate.getTimezoneOffset();
+          var event = new calendarModule.CalendarEvent('Terapia 1', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+
+          var startDate = new Date('13-mayo-2020');
+          var endDate = new Date('13-mayo-2020');
+          var event = new calendarModule.CalendarEvent('Terapia 1', startDate, endDate, true, new Color(200, 188, 26, 114));
+          events.push(event);
+>>>>>>> 8b621277a428830c15ee3dbbb3f032e204e907db
 
           this.calendarEvents = events;
      }
@@ -83,4 +117,5 @@ export class ReporteCitasComponent {
     onViewModeChanged(args) {
         console.log("onViewModeChanged: " + args.newValue);
     }
+
 }
