@@ -3,9 +3,12 @@
     color: white;
     border-radius: 5;
     margin-left: 5;
-    margin-top: 5;
-    margin-bottom: 10;
+    margin-top: 10;
     margin-right: 5;
+    font-size: 15;
+    font-weight: bold;
+    text-align: center;
+    
 }
 
 .diagnosticoLabel {
@@ -81,19 +84,54 @@
     margin-left: 20;
     margin-bottom: 5;
     margin-right: 20;
-    background-color:black;
-    color: #ffffff;
-    opacity: 0.8;
+    color: black;
     border-radius: 5;
 }
-.asistencia{
+.sesionAsistida{
     color: #9DCA56;
+    text-align:left;
+    margin-left: 15;
 
 }
-.faltas{
+.sesionPerdida{
     color: #f43f1f;
+    text-align: left;
+    margin-left: 15;
 
 }
-.listaAsistencia{
-    background-color: yellowgreen;
+.sesionActual{
+    color: black;
+    text-align: left;
+    margin-left: 15;
+}
+.sesionFaltante{
+    color: #bababa;
+    text-align: left;
+    margin-left: 15;
+
+}
+.notaProgreso{
+    font-size: 15;
+    font-weight: bold;
+    border-radius: 10;
+    background-color: black;
+    opacity: 0.6;
+    border-color: black;
+    border-width: 1 1 1 1;
+    margin-top: 10;
+    margin-left: 260;
+    margin-right: 10;
+}
+.notaProgresolis{
+    font-size: 15;
+    font-weight: bold;
+    border-radius: 10;
+    background-color: black;
+    opacity: 0.6;
+    border-color: black;
+    border-width: 1 1 1 1;
+    margin-top: 10;
+    margin-left: 240;
+    margin-right: 20;
+
 }

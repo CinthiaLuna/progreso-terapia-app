@@ -6,30 +6,43 @@
     </ActionItem>
     <Label text="Reporte de citas" class="titulo"> </Label>
 </ActionBar>
-<GridLayout class="fondo">
-
-    <TabView selectedTabTextColor="blue" tabBackgroundColor="white" tabTextFontSize="16"
+<GridLayout class="fondo"></GridLayout>
+<GridLayout>
+    <TabView selectedTabTextColor="green" tabBackgroundColor="white" tabTextFontSize="16"
         androidSelectedTabHighlightColor="gray">
+        <!-- Progreso de citas -->
         <StackLayout class="contenido"
             *tabItem="{title: 'Progreso', iconSource: '~/images/icons/reporte-citas/progreso.png', textTransform: 'lowercase'}">
-            <label text="PROGRESO DEL PACIENTE"></label>
-            <label text="Bloque actual: {{bloqueMayor}}"></label>
             <StackLayout class="paciente">
-                <label class="asistencia" text="Asistencias"></label>
-                <label class="faltas" text="Faltas"></label>
+                <label text="PROGRESO DE CITAS - BLOQUE ACTUAL {{bloqueMayor}}"></label>
+                <label text="Sesión actual: {{sesionEvaluada}} / 12"></label>
             </StackLayout>
-            <RadRadialGauge>
-                <RadialScale tkRadialGaugeScales minimum="1" maximum="12" radius="0.90">
+            <StackLayout class="notaProgreso">
+                <label text="Sesiones asistidas" class="sesionAsistida"></label>
+                <label text="Sesiones perdidas" class="sesionPerdida"></label>
+                <label text="Sesiones faltantes" class="sesionFaltante"></label>
+            </StackLayout>
+            <RadRadialGauge title="Sesión actual">
+                <RadialScale tkRadialGaugeScales minimum="1" maximum="12" radius="0.80">
+                    <TitleStyle tkRadialGaugeTitleStyle textColor="black" ios:verticalOffset="20"
+                        android:verticalOffset="50"></TitleStyle>
                     <ScaleStyle tkRadialScaleStyle majorTicksCount="1" minorTicksCount="1" lineThickness="0"
                         labelsCount="12" ticksOffset="0"></ScaleStyle>
-                    <RadialBarIndicator tkRadialScaleIndicators minimum="1" maximum="{{asistencias}}" location="0.97">
+                    <RadialBarIndicator tkRadialScaleIndicators minimum="1" maximum="{{asistencias}}" location="0.70">
                         <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#9DCA56"></BarIndicatorStyle>
                     </RadialBarIndicator>
                     <RadialBarIndicator tkRadialScaleIndicators minimum="{{asistencias}}" maximum="{{faltas}}"
-                        location="0.97">
+                        location="0.70">
                         <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#f43f1f"></BarIndicatorStyle>
                     </RadialBarIndicator>
-                    <RadialNeedle tkRadialScaleIndicators value="{{sesionEvaluada}}"></RadialNeedle>
+                    <RadialBarIndicator tkRadialScaleIndicators minimum="{{faltas}}" maximum="12" location="0.70">
+                        <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#bababa"></BarIndicatorStyle>
+                    </RadialBarIndicator>
+                    <RadialNeedle #needle tkRadialScaleIndicators isAnimated="true" animationDuration="1000"
+                        value="{{sesionEvaluada}}">
+                        <NeedleStyle tkRadialNeedleStyle length="0.5" android:topWidth="8" android:bottomWidth="8"
+                            ios:topWidth="2" ios:bottomWidth="2"></NeedleStyle>
+                    </RadialNeedle>
                 </RadialScale>
             </RadRadialGauge>
         </StackLayout>
@@ -45,17 +58,21 @@
         <ScrollView
             *tabItem="{title: 'Lista de citas', iconSource: '~/images/icons/reporte-citas/listacitas.png', textTransform: 'lowercase', tabBackgroundColor: 'red'}">
             <StackLayout class="fondoreporte">
+                <StackLayout class="notaProgresolis">
+                    <label text="Sesiones asistidas" class="sesionAsistida"></label>
+                    <label text="Sesiones perdidas" class="sesionPerdida"></label>
+                    <label text="Sesiones faltantes" class="sesionFaltante"></label>
+                </StackLayout>
                 <RadListView [items]="citasPorBloque">
                     <ng-template let-item="item">
-
-                            <GridLayout class="lista"
-                                [ngStyle]="{ 'background-color': item.asistenciaCita === true ? 'green' : (item.asistenciaCita === null ? 'gray': 'red' )}"
-                                rows="*,*" columns="30, auto, *">
-                                <label row="0" col="1" class="paciente-text-bold-top" text="Tipo de cita:"></label>
-                                <Label row="0" col="2" class="paciente-text-grado" [text]="item.tipoCita"></Label>
-                                <label row="1" col="1" class="paciente-text-bold" text="Fecha:"></label>
-                                <Label row="1" col="2" class="paciente-text-fecha" [text]="item.fechaCita"></Label>
-                            </GridLayout>
+                        <GridLayout class="lista"
+                            [ngStyle]="{ 'background-color': item.asistenciaCita === true ? '#9DCA56' : (item.asistenciaCita === null ? '#bababa': '#f43f1f' )}"
+                            rows="*,*" columns="30, auto, *">
+                            <label row="0" col="1" class="paciente-text-bold-top" text="Tipo de cita:"></label>
+                            <Label row="0" col="2" class="paciente-text-grado" [text]="item.tipoCita"></Label>
+                            <label row="1" col="1" class="paciente-text-bold" text="Fecha:"></label>
+                            <Label row="1" col="2" class="paciente-text-fecha" [text]="item.fechaCita"></Label>
+                        </GridLayout>
                     </ng-template>
                 </RadListView>
             </StackLayout>
