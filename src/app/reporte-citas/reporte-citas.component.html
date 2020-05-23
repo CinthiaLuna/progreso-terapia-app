@@ -8,8 +8,8 @@
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>
 <GridLayout>
-    <TabView selectedTabTextColor="green" tabBackgroundColor="white" tabTextFontSize="16"
-        androidSelectedTabHighlightColor="gray">
+    <TabView selectedTabTextColor="#5bf033" tabBackgroundColor="white" tabTextFontSize="16"
+        androidSelectedTabHighlightColor="gray" tabTextColor="black">
         <!-- Progreso de citas -->
         <StackLayout class="contenido"
             *tabItem="{title: 'Progreso', iconSource: '~/images/icons/reporte-citas/progreso.png', textTransform: 'lowercase'}">
@@ -17,11 +17,13 @@
                 <label text="PROGRESO DE CITAS - BLOQUE ACTUAL {{bloqueMayor}}"></label>
                 <label text="Sesión actual: {{sesionEvaluada}} / 12"></label>
             </StackLayout>
-            <StackLayout class="notaProgreso">
+            <GridLayout columns="*,auto,10" rows="auto">
+            <StackLayout col="1" row="0" class="notaProgreso" justifyContent="center">
                 <label text="Sesiones asistidas" class="sesionAsistida"></label>
                 <label text="Sesiones perdidas" class="sesionPerdida"></label>
                 <label text="Sesiones faltantes" class="sesionFaltante"></label>
             </StackLayout>
+            </GridLayout>
             <RadRadialGauge title="Sesión actual">
                 <RadialScale tkRadialGaugeScales minimum="1" maximum="12" radius="0.80">
                     <TitleStyle tkRadialGaugeTitleStyle textColor="black" ios:verticalOffset="20"
@@ -58,11 +60,13 @@
         <ScrollView
             *tabItem="{title: 'Lista de citas', iconSource: '~/images/icons/reporte-citas/listacitas.png', textTransform: 'lowercase', tabBackgroundColor: 'red'}">
             <StackLayout class="fondoreporte">
-                <StackLayout class="notaProgresolis">
+                <GridLayout columns="*,auto,10" rows="auto">
+                <StackLayout col="1" row="0" class="notaProgresolis" justifyContent="center">
                     <label text="Sesiones asistidas" class="sesionAsistida"></label>
                     <label text="Sesiones perdidas" class="sesionPerdida"></label>
                     <label text="Sesiones faltantes" class="sesionFaltante"></label>
                 </StackLayout>
+                </GridLayout>
                 <RadListView [items]="citasPorBloque">
                     <ng-template let-item="item">
                         <GridLayout class="lista"
@@ -79,3 +83,4 @@
         </ScrollView>
     </TabView>
 </GridLayout>
+

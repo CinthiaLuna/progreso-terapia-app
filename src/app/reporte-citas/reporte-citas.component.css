@@ -8,7 +8,7 @@
     font-size: 15;
     font-weight: bold;
     text-align: center;
-    
+
 }
 
 .diagnosticoLabel {
@@ -89,25 +89,25 @@
 }
 .sesionAsistida{
     color: #9DCA56;
-    text-align:left;
-    margin-left: 15;
+    text-align:center;
+    margin-left: 10;
 
 }
 .sesionPerdida{
     color: #f43f1f;
-    text-align: left;
-    margin-left: 15;
+    text-align: center;
+    margin-left: 10;
 
 }
 .sesionActual{
     color: black;
-    text-align: left;
-    margin-left: 15;
+    text-align: center;
+    margin-left: 10;
 }
 .sesionFaltante{
     color: #bababa;
-    text-align: left;
-    margin-left: 15;
+    text-align: center;
+    margin-left: 10;
 
 }
 .notaProgreso{
@@ -119,8 +119,7 @@
     border-color: black;
     border-width: 1 1 1 1;
     margin-top: 10;
-    margin-left: 260;
-    margin-right: 10;
+    padding-right: 10;
 }
 .notaProgresolis{
     font-size: 15;
@@ -131,7 +130,5 @@
     border-color: black;
     border-width: 1 1 1 1;
     margin-top: 10;
-    margin-left: 240;
-    margin-right: 20;
-
+    padding-right: 10;
 }
