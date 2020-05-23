@@ -69,7 +69,6 @@ export class AuthService {
     guardarToken(accessToken: string): void {
         this._token = accessToken;
         localStroage.setItem('token', accessToken);
-
     }
     obtenerDatosToken(accessToken: string): any {
         if (accessToken != null) {

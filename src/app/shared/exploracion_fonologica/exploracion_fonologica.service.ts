@@ -48,7 +48,11 @@ export class ExploracionFonologicaService {
         return throwError(error);
     }
     private isNoAuthorizado(error): boolean {
-        if (error.estatus == 401 || error.estatus == 403) {
+        if (error.estatus == 401 || error.estatus == 403){
+            if (this.authService.isAuthenticated()) {
+                this.authService.logout();
+                
+            }
             this.routerExtensions.navigate(['/login'])
             return true;
         }

@@ -19,9 +19,9 @@
             </StackLayout>
             <GridLayout columns="*,auto,10" rows="auto">
             <StackLayout col="1" row="0" class="notaProgreso" justifyContent="center">
-                <label text="Sesiones asistidas" class="sesionAsistida"></label>
-                <label text="Sesiones perdidas" class="sesionPerdida"></label>
-                <label text="Sesiones faltantes" class="sesionFaltante"></label>
+                <label text="Sesiones asistidas: {{asistencias}}" class="sesionAsistida"></label>
+                <label text="Sesiones perdidas: {{faltas - asistencias}}" class="sesionPerdida"></label>
+                <label text="Sesiones faltantes: {{faltas - 12}}" class="sesionFaltante"></label>
             </StackLayout>
             </GridLayout>
             <RadRadialGauge title="Sesión actual">
@@ -36,9 +36,6 @@
                     <RadialBarIndicator tkRadialScaleIndicators minimum="{{asistencias}}" maximum="{{faltas}}"
                         location="0.70">
                         <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#f43f1f"></BarIndicatorStyle>
-                    </RadialBarIndicator>
-                    <RadialBarIndicator tkRadialScaleIndicators minimum="{{faltas}}" maximum="12" location="0.70">
-                        <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#bababa"></BarIndicatorStyle>
                     </RadialBarIndicator>
                     <RadialNeedle #needle tkRadialScaleIndicators isAnimated="true" animationDuration="1000"
                         value="{{sesionEvaluada}}">
