@@ -47,7 +47,6 @@ export class ReporteDiagnosticoComponent implements OnInit {
 
     }
 
-
     onNavigate(item){
         this.routerExtensions.navigate(["/reporte-diagnostico/detalle-diagnostico"], {
             queryParams : {

@@ -109,15 +109,15 @@ export class DetalleDiagnosticoComponent implements OnInit {
 
         var doc = new jsPDF('p', 'pt');
         doc.setFontSize(26);
-        doc.text(40, 40, "My first PDF with NativeScript!");
-        doc.text(20,20,"this.exploracionFonologica");
+        doc.text(40, 40, "Reporte de diagnóstico");
+        doc.text(20,20,`{$this.nombrePaciente}`);
 
         var base64 = doc.output('datauristring')
         
         dialogs.alert({
-            title: "PDF - Base64",
-            message: base64,
-            okButtonText: "Copy text"
+            title: "Reporte de diagnóstico",
+            message: "Click en copiar y pegalo en tu navegador",
+            okButtonText: "Copiar ruta"
         }).then(() => {
             clipboard.setText(base64)
         });
