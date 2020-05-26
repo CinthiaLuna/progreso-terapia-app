@@ -6,7 +6,7 @@ export class Cita {
     numeroSesion: number;
     asistenciaCita:Boolean;
     tipoCita: String;
-    fechaCita: Date;
+    fechaCita: string;
     idSeguimiento: string;
     hora: Time;
 }

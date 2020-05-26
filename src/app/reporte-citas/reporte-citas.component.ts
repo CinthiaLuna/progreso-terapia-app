@@ -13,7 +13,7 @@ import { ProgresoCita } from "../shared/cita/progreso_cita";
     templateUrl: "./reporte-citas.component.html",
     styleUrls: ["./reporte-citas.component.css"]
 })
-export class ReporteCitasComponent implements OnInit{
+export class ReporteCitasComponent implements OnInit, DoCheck{
     citasPorBloque = [];
     fechaCitas = [];
     progresoCitas: ProgresoCita;
@@ -30,21 +30,15 @@ export class ReporteCitasComponent implements OnInit{
                 for (let i = 0; i < result.length; i++) {
                     this.fechaCitas[i] = result[i].fechaCita;
                 }
-                
+
             }
         );
+        console.log(this.fechaCitas[0]);
     }
 
 
     ngOnInit() {
-        let events = [];
-        for (let i = 0; i < this.fechaCitas.length; i++) {
-            var startDate = new Date(this.fechaCitas[i]);
-            var endDate = new Date(this.fechaCitas[i]);
-            var event = new calendarModule.CalendarEvent('Terapia', startDate, endDate, true, new Color(200, 188, 26, 114));
-            events.push(event);
-        }
-        this.calendarEvents = events;
+
         this.citaService.obtenerProgresoCitas().subscribe(
             result => {
                 this.asistencias = result.asistencias;
@@ -54,6 +48,19 @@ export class ReporteCitasComponent implements OnInit{
 
             }
         );
+    }
+
+    ngDoCheck() {
+        console.log("Docheck: " + this.fechaCitas);
+        let events = [];
+        for (let i = 0; i < this.fechaCitas.length; i++) {
+            var startDate = new Date(this.fechaCitas[i]);
+            var endDate = new Date(this.fechaCitas[i]);
+            var event = new calendarModule.CalendarEvent('Terapia', startDate, endDate, true, new Color(200, 188, 26, 114));
+            events.push(event);
+        }
+        this.calendarEvents = events;
+
     }
     onCalendario() {
         console.log("entre");
@@ -82,6 +89,10 @@ export class ReporteCitasComponent implements OnInit{
 
     onViewModeChanged(args) {
         console.log("onViewModeChanged: " + args.newValue);
+    }
+
+    onSelected(){
+        console.log("asd");
     }
 
 }
