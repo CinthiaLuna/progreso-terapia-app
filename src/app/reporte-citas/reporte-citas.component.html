@@ -20,8 +20,8 @@
             <GridLayout columns="*,auto,10" rows="auto">
             <StackLayout col="1" row="0" class="notaProgreso" justifyContent="center">
                 <label text="Sesiones asistidas: {{asistencias}}" class="sesionAsistida"></label>
-                <label text="Sesiones perdidas: {{faltas - asistencias}}" class="sesionPerdida"></label>
-                <label text="Sesiones faltantes: {{faltas - 12}}" class="sesionFaltante"></label>
+                <label text="Sesiones perdidas: {{faltas}}" class="sesionPerdida"></label>
+                <label text="Sesiones faltantes: {{restantes}}" class="sesionFaltante"></label>
             </StackLayout>
             </GridLayout>
             <RadRadialGauge title="Sesión actual">
@@ -33,7 +33,7 @@
                     <RadialBarIndicator tkRadialScaleIndicators minimum="1" maximum="{{asistencias}}" location="0.70">
                         <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#9DCA56"></BarIndicatorStyle>
                     </RadialBarIndicator>
-                    <RadialBarIndicator tkRadialScaleIndicators minimum="{{asistencias}}" maximum="{{faltas}}"
+                    <RadialBarIndicator tkRadialScaleIndicators minimum="{{asistencias}}" maximum="{{faltas + asistencias}}"
                         location="0.70">
                         <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#f43f1f"></BarIndicatorStyle>
                     </RadialBarIndicator>
@@ -47,7 +47,7 @@
         </StackLayout>
         <!--Calendario-->
         <StackLayout
-            *tabItem="{title: 'Calendario', iconSource: '~/images/icons/reporte-citas/calendario.png', textTransform: 'lowercase'}" (selectedTabChange)="onCalendario()">
+            *tabItem="{title: 'Calendario', iconSource: '~/images/icons/reporte-citas/calendario.png', textTransform: 'lowercase'}">
             <RadCalendar [eventSource]="calendarEvents" eventsViewMode="Inline" selectionMode="Single" viewMode="Month"
                 transitionMode="Stack" locale="es-MX" (dateSelected)="onDateSelected($event)"
                 (dateDeselected)="onDateDeselected($event)" (navigatedToDate)="onNavigatedToDate($event)"

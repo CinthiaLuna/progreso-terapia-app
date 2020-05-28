@@ -1,4 +1,4 @@
-import { Component, Directive, OnInit, AfterContentInit, DoCheck, AfterViewInit } from "@angular/core";
+import { Component, Directive, OnInit, AfterContentInit, DoCheck, AfterViewInit, AfterContentChecked } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import * as calendarModule from "nativescript-ui-calendar";
@@ -13,12 +13,13 @@ import { ProgresoCita } from "../shared/cita/progreso_cita";
     templateUrl: "./reporte-citas.component.html",
     styleUrls: ["./reporte-citas.component.css"]
 })
-export class ReporteCitasComponent implements OnInit, DoCheck{
+export class ReporteCitasComponent implements OnInit {
     citasPorBloque = [];
     fechaCitas = [];
     progresoCitas: ProgresoCita;
     asistencias: number;
     faltas: number;
+    restantes: number;
     sesionEvaluada: number;
     bloqueMayor: number;
     calendarEvents = [];
@@ -33,39 +34,35 @@ export class ReporteCitasComponent implements OnInit, DoCheck{
 
             }
         );
-        console.log(this.fechaCitas[0]);
-    }
-
-
-    ngOnInit() {
-
         this.citaService.obtenerProgresoCitas().subscribe(
             result => {
                 this.asistencias = result.asistencias;
-                this.faltas = result.faltas + result.asistencias;
+                this.faltas = result.faltas;
+                this.restantes = result.restantes;
                 this.sesionEvaluada = result.sesionEvaluada;
                 this.bloqueMayor = result.mayor;
-
             }
         );
+
+    }
+    ngOnInit() {
+
     }
 
     ngDoCheck() {
-        console.log("Docheck: " + this.fechaCitas);
         let events = [];
-        for (let i = 0; i < this.fechaCitas.length; i++) {
-            var startDate = new Date(this.fechaCitas[i]);
-            var endDate = new Date(this.fechaCitas[i]);
-            var event = new calendarModule.CalendarEvent('Terapia', startDate, endDate, true, new Color(200, 188, 26, 114));
-            events.push(event);
+        if(this.fechaCitas.length != 0){
+            for (let i = 0; i < this.fechaCitas.length; i++) {
+                var startDate = new Date(this.fechaCitas[i]);
+                var endDate = new Date(this.fechaCitas[i]);
+                var event = new calendarModule.CalendarEvent('TLF18 Terapia', startDate, endDate, true, new Color(200, 188, 26, 114));
+                events.push(event);
+            }
+            this.calendarEvents = events;
         }
-        this.calendarEvents = events;
-
-    }
-    onCalendario() {
-        console.log("entre");
     }
 
+    
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
@@ -91,7 +88,7 @@ export class ReporteCitasComponent implements OnInit, DoCheck{
         console.log("onViewModeChanged: " + args.newValue);
     }
 
-    onSelected(){
+    onSelected() {
         console.log("asd");
     }
 
