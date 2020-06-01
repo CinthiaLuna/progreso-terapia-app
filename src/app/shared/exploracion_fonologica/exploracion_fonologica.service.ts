@@ -9,7 +9,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 @Injectable()
 export class ExploracionFonologicaService {
-    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/exploracion_fonologica/';
+    private urlEndPoint: string = 'http://192.168.100.24:8080/api/oauth2/exploracion_fonologica/';
     private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient, private authService: AuthService, private routerExtensions: RouterExtensions) { }
 

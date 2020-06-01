@@ -6,14 +6,20 @@
     </ActionItem>
     <Label text="Terapias" class="titulo"> </Label>
 </ActionBar>
-
-<GridLayout class="fondo">
-   <!-- <ListView [items]="terapias">
-        <ng-template let-terapia="item" let-i="index">-->
-            <GridLayout rows="40,auto" columns="50,*">
-                <Image src="terapia.img"></Image>
-                <Label text="Nombre de la terapia" row="0" col="1"></Label>
-            </GridLayout>
-       <!-- </ng-template>
-    </ListView>-->
+<GridLayout class="fondo"></GridLayout>
+<GridLayout class="fondoreporte"></GridLayout>
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <RadListView [items]="listaProcedimiento" marginRight="-1" backgroundColor="#e6e6e6">
+        <ListViewStaggeredLayout tkListViewLayout scrollDirection="Vertical"
+            spanCount="2"></ListViewStaggeredLayout>
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout margin="5" (tap)="onNavigate(item)">
+                <Image src="{{ item.imagen }}" class="imagenLista" width="200" height="150"
+                    stretch="aspectFill"></Image>
+                <StackLayout backgroundColor="white" padding="10" class="nombreLista">
+                    <Label text="{{ item.procedimiento }}" class="item-name" textWrap="true"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
 </GridLayout>

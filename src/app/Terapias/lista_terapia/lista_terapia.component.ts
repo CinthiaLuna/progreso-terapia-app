@@ -1,17 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { ProcedimientoService } from "../shared/procedimiento/procedimiento.service";
-import { TerapiaService } from "../shared/terapia/terapia.service";
-import { Procedimiento } from "../shared/procedimiento/procedimiento";
 import { RouterExtensions } from "nativescript-angular/router";
+import { Procedimiento } from "~/app/shared/procedimiento/procedimiento";
+import { ProcedimientoService } from "~/app/shared/procedimiento/procedimiento.service";
+import { TerapiaService } from "~/app/shared/terapia/terapia.service";
 
 @Component({
-    selector: "ns-terapias",
-    templateUrl: "./terapias.component.html",
-    styleUrls: ["./terapias.component.css"]
+    selector: "ns-lista-terapia",
+    templateUrl: "./lista_terapia.component.html",
 })
-export class TerapiasComponent implements OnInit {
+export class ListaTerapiaComponent implements OnInit {
     listaProcedimiento: Procedimiento[];
     constructor(
         private procedimientoService: ProcedimientoService, 
@@ -30,7 +29,7 @@ export class TerapiasComponent implements OnInit {
 
     }
     onNavigate(item){
-        this.routerExtensions.navigate(["/terapias/lista-terapia"], {
+        this.routerExtensions.navigate([""], {
             queryParams : {
                 exploracionFonologica: JSON.stringify(item)
             }

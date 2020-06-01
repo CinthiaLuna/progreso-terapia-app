@@ -1,18 +1,18 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { map, catchError } from "rxjs/operators";
-import { Paciente } from "./paciente";
 import { throwError, Observable } from "rxjs";
-import { idProperty } from "tns-core-modules/ui/page/page";
-import { RouterExtensions } from "nativescript-angular/router";
 import { AuthService } from "../usuarioAppMovil/auth.service";
+import { RouterExtensions } from "nativescript-angular/router";
+import { Terapia } from "./terapia";
+
 
 @Injectable()
-export class PacienteService {
-    private urlEndPoint: string = 'http://192.168.100.24:8080/api/oauth2/paciente';
-
+export class TerapiaService {
+    private urlEndPoint: string = 'http://192.168.100.24:8080/api/oauth2/terapia/';
     private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    constructor(private http: HttpClient, private routerExtensions: RouterExtensions, private authService: AuthService) { }
+
+    constructor(private http: HttpClient, private authService: AuthService,  private routerExtensions: RouterExtensions) { }
 
     private agregarAuthorizationHeaders(){
         let token = this.authService.token;
@@ -23,14 +23,14 @@ export class PacienteService {
 
     }
 
-    getPaciente(): Observable<Paciente> {
-        return this.http.get<Paciente>(this.urlEndPoint, {headers: this.agregarAuthorizationHeaders()}).pipe(
-            map(response => response as Paciente),
+    obtenerTerapias(id): Observable<Terapia[]> {
+        return this.http.get(`${this.urlEndPoint}/${id}`,{headers: this.agregarAuthorizationHeaders()}).pipe(
+            map(response => response as Terapia[]),
             catchError(error => {
                 this.isNoAuthorizado(error);
                 return throwError(error);
             })
-        );
+          );
     }
 
     handleErrors(error: Response) {
