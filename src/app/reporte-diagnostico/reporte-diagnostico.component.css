@@ -23,6 +23,7 @@
     transition: .3s transform ease-in-out;
 }
 
+
 .collapse{
 
     transform: rotate(270deg);

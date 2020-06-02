@@ -24,7 +24,7 @@ export class TerapiaService {
     }
 
     obtenerTerapias(id): Observable<Terapia[]> {
-        return this.http.get(`${this.urlEndPoint}/${id}`,{headers: this.agregarAuthorizationHeaders()}).pipe(
+        return this.http.get(`${this.urlEndPoint}${id}`,{headers: this.agregarAuthorizationHeaders()}).pipe(
             map(response => response as Terapia[]),
             catchError(error => {
                 this.isNoAuthorizado(error);

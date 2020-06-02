@@ -1,0 +1,11 @@
+.icon{
+    height: 24;
+    width: 80;
+    transition: .3s transform ease-in-out;
+}
+.item-lista{
+    margin-left: 15;
+}
+.title {
+    font-size: 23;
+}
