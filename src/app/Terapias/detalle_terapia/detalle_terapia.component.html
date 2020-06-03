@@ -4,22 +4,14 @@
     <ActionItem icon="res://baseline_arrow_back_white_18" android:visibility="collapsed" ios.position="left"
         (tap)="onNavigate()">
     </ActionItem>
-    <Label text="Terapias" class="titulo"> </Label>
+    <Label text="{{detalleTerapia.nombreTerapia}}" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>
-<GridLayout class="fondoreporte"></GridLayout>
-<GridLayout tkExampleTitle tkToggleNavButton>
-    <RadListView [items]="listaProcedimiento" marginRight="-1" backgroundColor="#e6e6e6">
-        <ListViewStaggeredLayout tkListViewLayout scrollDirection="Vertical"
-            spanCount="2"></ListViewStaggeredLayout>
-        <ng-template tkListItemTemplate let-item="item">
-            <StackLayout margin="5" (tap)="onNavigate(item)">
-                <Image src="{{ item.imagen }}" class="imagenLista" width="200" height="150"
-                    stretch="aspectFill"></Image>
-                <StackLayout backgroundColor="white" padding="10" class="nombreLista">
-                    <Label text="{{ item.procedimiento }}" class="item-name" textWrap="true"></Label>
-                </StackLayout>
-            </StackLayout>
-        </ng-template>
-    </RadListView>
-</GridLayout>
+<StackLayout class="fondoreporte">
+    <Label class="title" text="{{detalleTerapia.nombreTerapia}}" textWrap="true"></Label>
+    <Image src="{{detalleTerapia.imagen}}"></Image>
+    <Label class="title" text="Descripción de terapia:" textWrap="true"></Label>
+    <TextView text="{{detalleTerapia.descripcion}}" editable="false"></TextView>
+    <Label class="title" text="Enlaces de terapia:" textWrap="true"></Label>
+    <TextView text="{{detalleTerapia.enlace}}" editable="false"></TextView>
+</StackLayout>

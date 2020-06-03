@@ -7,20 +7,11 @@
     <Label text="{{detalleProcedimiento.procedimiento}}" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>
-<GridLayout tkExampleTitle tkToggleNavButton>
-    <RadListView [items]="listaTerapia" marginRight="-1" backgroundColor="#e6e6e6" class="fondoreporte">
-        <ListViewStaggeredLayout tkListViewLayout scrollDirection="Vertical" spanCount="1"></ListViewStaggeredLayout>
-        <ng-template tkListItemTemplate let-item="item">
-            <FlexboxLayout class="item-lista" justifyContent="space-between" alignItems="center" alignContent="center">
-                <Label class="item-lista" text="{{item.nombreTerapia}}" class="title" (tap)="goCollapse($event)">
-                </Label>
-                <Image src="res://baseline_expand_more_black_18" class="icon" [ngClass]='{ collapse: isCollapsed }'
-                    (tap)="goCollapse($event)"></Image>
-                <StackLayout class="item-lista" [visibility]="showCollapseBox ? 'visible' : 'collapse'">
-                    <TextView class="paciente-text-dato" text="{{item.descripcion}}" editable="false">
-                    </TextView>
-                </StackLayout>
-
+<GridLayout class="fondoreporte">
+    <RadListView class="list-group" [items]="listaTerapia" >
+        <ng-template let-item="item">
+            <FlexboxLayout (Tap)="onItemTap(item)">
+                <Label class="title" [text]="item.nombreTerapia"></Label>
             </FlexboxLayout>
         </ng-template>
     </RadListView>

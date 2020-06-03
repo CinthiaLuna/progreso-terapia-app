@@ -16,17 +16,14 @@ import { Terapia } from "~/app/shared/terapia/terapia";
 export class ListaTerapiaComponent implements OnInit {
     public detalleProcedimiento : any;
     listaTerapia: Terapia[];
-
     
-
-
     constructor(
         private procedimientoService: ProcedimientoService, 
         private terapiaService: TerapiaService,
         private routerExtensions: RouterExtensions,
         private activedRoute : ActivatedRoute
         ){
-            this.detalleProcedimiento=JSON.parse(this.activedRoute.snapshot.queryParams["exploracionFonologica"]);
+            this.detalleProcedimiento=JSON.parse(this.activedRoute.snapshot.queryParams["detalleProcedimiento"]);
             console.log(this.detalleProcedimiento);
 
     }
@@ -41,6 +38,14 @@ export class ListaTerapiaComponent implements OnInit {
         )
 
     }
+    onItemTap(item){
+        this.routerExtensions.navigate(["/terapias/detalle-terapia"], {
+            queryParams : {
+                detalleTerapia: JSON.stringify(item)
+            }
+        })
+
+    }
 
     onNavigate() {
         this.routerExtensions.back();
@@ -49,19 +54,5 @@ export class ListaTerapiaComponent implements OnInit {
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
-    }
-
-    public showCollapseBox = false;
-    isCollapsed = false;
-
-    goCollapse(args) {
-        if (this.showCollapseBox) {
-            this.showCollapseBox = false;
-            this.isCollapsed = !this.isCollapsed;
-        }
-        else {
-            this.showCollapseBox = true;
-            this.isCollapsed = !this.isCollapsed;
-        }
     }
 }

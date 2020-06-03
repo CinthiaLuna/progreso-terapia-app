@@ -32,7 +32,7 @@ export class TerapiasComponent implements OnInit {
     onNavigate(item){
         this.routerExtensions.navigate(["/terapias/lista-terapia"], {
             queryParams : {
-                exploracionFonologica: JSON.stringify(item)
+                detalleProcedimiento: JSON.stringify(item)
             }
         })
     }

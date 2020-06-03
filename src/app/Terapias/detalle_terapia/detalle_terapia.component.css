@@ -1,0 +1,13 @@
+.fondoreporte{
+    margin-top: 10;
+    margin-left: 10;
+    margin-bottom: 20;
+    margin-right: 10;
+    border-radius: 10;
+    background-color: white;
+    opacity: 0.95;
+}
+.title {
+    font-size: 23;
+    margin-left: 10;
+}

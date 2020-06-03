@@ -71,9 +71,9 @@
     margin-left: 10;
     margin-bottom: 20;
     margin-right: 10;
-    border-radius: 5;
+    border-radius: 10;
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 .lista{
     height: 80;
@@ -104,8 +104,10 @@
 .imagenLista{
     border-top-left-radius: 20;
     border-top-right-radius: 20;
+    opacity: 1;
 }
 .nombreLista{
     border-bottom-left-radius: 20;
     border-bottom-right-radius: 20;
+    opacity: 1;
 }
