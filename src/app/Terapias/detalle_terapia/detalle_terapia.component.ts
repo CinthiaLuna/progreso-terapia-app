@@ -14,11 +14,8 @@ export class DetalleTerapiaComponent implements OnInit {
     constructor(
         private routerExtensions: RouterExtensions,
         private activatedRoute: ActivatedRoute,
-        ){
-            this.detalleTerapia=JSON.parse(this.activatedRoute.snapshot.queryParams["detalleTerapia"]);
-            console.log(this.detalleTerapia);
-
-
+    ) {
+        this.detalleTerapia = JSON.parse(this.activatedRoute.snapshot.queryParams["detalleTerapia"]);
     }
     ngOnInit(): void {
 
@@ -31,5 +28,5 @@ export class DetalleTerapiaComponent implements OnInit {
     onNavigate() {
         this.routerExtensions.back();
     }
-    
+
 }

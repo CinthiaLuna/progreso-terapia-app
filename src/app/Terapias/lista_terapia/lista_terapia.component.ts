@@ -24,7 +24,6 @@ export class ListaTerapiaComponent implements OnInit {
         private activedRoute : ActivatedRoute
         ){
             this.detalleProcedimiento=JSON.parse(this.activedRoute.snapshot.queryParams["detalleProcedimiento"]);
-            console.log(this.detalleProcedimiento);
 
     }
     ngOnInit(): void {

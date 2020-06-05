@@ -36,6 +36,7 @@
     "rxjs": "^6.4.0",
     "tns-core-modules": "~6.4.0",
     "url-search-params-polyfill": "^8.0.0",
+    "utf-8": "^2.0.0",
     "utf8": "^3.0.0",
     "zone.js": "~0.9.1"
   },

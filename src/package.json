@@ -3,5 +3,9 @@
   "android": {
     "v8Flags": "--expose_gc",
     "markingMode": "none"
+  },
+  "devDependencies": {
+    "@types/base-64": "^0.1.3",
+    "@types/utf8": "^2.1.6"
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-
+import * as utf8 from 'utf8';
+import * as base64 from 'base-64';
 import { RouterExtensions } from "nativescript-angular/router";
 import { ExploracionFonologicaService } from "~/app/shared/exploracion_fonologica/exploracion_fonologica.service";
 import { PacienteService } from "~/app/shared/paciente/paciente.service";
@@ -19,11 +20,9 @@ global['document'] = {
 };
 global['navigator'] = {};
 
-const base64 = require('../../base-64');
-const utf8 = require('../../utf8');
-const jsPDF = require('../../jspdf')
-const clipboard = require("../../nativescript-clipboard")
-const dialogs = require("ui/dialogs")
+const jsPDF = require('../../jspdf');
+const clipboard = require("../../nativescript-clipboard");
+const dialogs = require("ui/dialogs");
 
 global['btoa'] = (str) => {
     var bytes = utf8.encode(str);
@@ -36,10 +35,10 @@ global['btoa'] = (str) => {
     styleUrls: ["./detalle-diagnostico.component.css"]
 })
 export class DetalleDiagnosticoComponent implements OnInit {
-    public exploracionFonologica : any;
-    nombrePaciente : string;
+    public exploracionFonologica: any;
+    nombrePaciente: string;
     edadPaciente: string;
-    planTrabajoIndicaciones : string;
+    planTrabajoIndicaciones: string;
     planTrabajonumeroSesiones: number;
     planTrabajonumeroBloque: number;
     planTrabajotemporalidad: string;
@@ -51,9 +50,9 @@ export class DetalleDiagnosticoComponent implements OnInit {
         private planTrabajoService: PlanTrabajoService,
         private exploracionFonologicaService: ExploracionFonologicaService,
         private routerExtensions: RouterExtensions,
-        private activedRoute : ActivatedRoute
+        private activedRoute: ActivatedRoute
     ) {
-        this.exploracionFonologica=JSON.parse(this.activedRoute.snapshot.queryParams["exploracionFonologica"]);
+        this.exploracionFonologica = JSON.parse(this.activedRoute.snapshot.queryParams["exploracionFonologica"]);
         this.nombrePaciente = this.exploracionFonologica.paciente.nombrePaciente + " " + this.exploracionFonologica.paciente.apellidoPaciente;
         this.edadPaciente = this.exploracionFonologica.paciente.edadPaciente + " años";
     }
@@ -80,7 +79,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
 
     public showCollapseBox = true;
-    public showCollapseBox2 = true ;
+    public showCollapseBox2 = true;
     isCollapsed = true;
     isCollapsed2 = true;
 
@@ -106,14 +105,17 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
 
     generatePDF() {
-
         var doc = new jsPDF('p', 'pt');
-        doc.setFontSize(26);
-        doc.text(40, 40, "Reporte de diagnóstico");
-        doc.text(20,20,`{$this.nombrePaciente}`);
+        doc.setFontSize(40);
+        doc.text(50, 50, "Reporte de diagn\u00F3stico");
+        doc.setFontSize(15);
+        doc.text(40, 80, 'Datos generales del paciente:');
+        doc.setFontSize(12);
+        doc.text(50, 110, 'Nombre paciente: ' + this.nombrePaciente);
+        doc.text(50, 140, 'Edad paciente: ' + this.edadPaciente);
+        doc.text(50, 170, 'Nombre paciente: ' + this.nombrePaciente);
+        var base64 = doc.output('datauristring');
 
-        var base64 = doc.output('datauristring')
-        
         dialogs.alert({
             title: "Reporte de diagnóstico",
             message: "Click en copiar y pegalo en tu navegador",

@@ -42,7 +42,7 @@ export class AuthService {
     }
 
     login(usuarioAppMovil: UsuarioAppMovil): Observable<any> {
-        const urlEndpoint = 'http://192.168.100.24:8080/oauth/token';
+        const urlEndpoint = 'http://192.168.100.72:8080/oauth/token';
         const credenciales = base64.encode('androidApp' + ':' + '123');
         const httpHeaders = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',

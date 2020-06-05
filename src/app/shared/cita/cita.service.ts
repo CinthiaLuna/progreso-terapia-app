@@ -10,7 +10,7 @@ import { ProgresoCita } from "./progreso_cita";
 
 @Injectable()
 export class CitaService {
-    private urlEndPoint: string = 'http://192.168.100.24:8080/api/oauth2/cita';
+    private urlEndPoint: string = 'http://192.168.100.72:8080/api/oauth2/cita';
     private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient, private authService: AuthService, private routerExtensions: RouterExtensions) { }
 
