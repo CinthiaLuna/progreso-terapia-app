@@ -32,6 +32,7 @@
     "nativescript-ui-gauge": "^6.0.0",
     "nativescript-ui-listview": "^8.1.2",
     "nativescript-ui-sidedrawer": "^8.0.0",
+    "pdfmake": "^0.1.65",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
     "tns-core-modules": "~6.4.0",

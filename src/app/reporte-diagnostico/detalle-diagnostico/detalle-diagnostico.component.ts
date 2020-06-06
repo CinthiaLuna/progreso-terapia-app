@@ -8,6 +8,8 @@ import { ExploracionFonologicaService } from "~/app/shared/exploracion_fonologic
 import { PacienteService } from "~/app/shared/paciente/paciente.service";
 import { ActivatedRoute } from "@angular/router";
 import { PlanTrabajoService } from "~/app/shared/plan_trabajo/plan_trabajo.service";
+import * as pdfMake from 'pdfmake/build/pdfmake.js';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { PlanTrabajo } from "~/app/shared/plan_trabajo/plan_trabajo";
 
 global['window'] = {
@@ -44,7 +46,6 @@ export class DetalleDiagnosticoComponent implements OnInit {
     planTrabajotemporalidad: string;
 
 
-
     constructor(
         private pacienteService: PacienteService,
         private planTrabajoService: PlanTrabajoService,
@@ -55,6 +56,7 @@ export class DetalleDiagnosticoComponent implements OnInit {
         this.exploracionFonologica = JSON.parse(this.activedRoute.snapshot.queryParams["exploracionFonologica"]);
         this.nombrePaciente = this.exploracionFonologica.paciente.nombrePaciente + " " + this.exploracionFonologica.paciente.apellidoPaciente;
         this.edadPaciente = this.exploracionFonologica.paciente.edadPaciente + " años";
+        pdfMake.vfs = pdfFonts.pdfMake.vfs;
     }
 
     ngOnInit() {
@@ -105,23 +107,27 @@ export class DetalleDiagnosticoComponent implements OnInit {
     }
 
     generatePDF() {
-        var doc = new jsPDF('p', 'pt');
-        doc.setFontSize(40);
-        doc.text(50, 50, "Reporte de diagn\u00F3stico");
-        doc.setFontSize(15);
-        doc.text(40, 80, 'Datos generales del paciente:');
-        doc.setFontSize(12);
-        doc.text(50, 110, 'Nombre paciente: ' + this.nombrePaciente);
-        doc.text(50, 140, 'Edad paciente: ' + this.edadPaciente);
-        doc.text(50, 170, 'Nombre paciente: ' + this.nombrePaciente);
-        var base64 = doc.output('datauristring');
+        var docDefinition = {
 
-        dialogs.alert({
-            title: "Reporte de diagnóstico",
-            message: "Click en copiar y pegalo en tu navegador",
-            okButtonText: "Copiar ruta"
-        }).then(() => {
-            clipboard.setText(base64)
+            content: [
+
+                { text: 'REPORTE DE DIAGNÓSTICO', fontSize: '40', alignment: 'center' },
+                { text: '\nDatos generales: ', fontSize: '20', alignment: 'justify' },
+                { text: '\nFecha de reporte: ' + this.exploracionFonologica.fechaExploracionFonlogica, fontSize: '12', alignment: 'justify' },
+                { text: '\nNombre de paciente: ' + this.nombrePaciente, fontSize: '12', alignment: 'justify' },
+                { text: '\nNúmero de expediente: ' + this.exploracionFonologica.paciente.numero_expediente, fontSize: '12', alignment: 'justify' },                
+                { text: '\nEdad de paciente: ' + this.edadPaciente, fontSize: '12', alignment: 'justify' },
+                
+            ],
+        }
+        pdfMake.createPdf(docDefinition).getDataUrl((dataUrl) => {
+            dialogs.alert({
+                title: "PDFMake - Base64",
+                message: dataUrl,
+                okButtonText: "Copy to Clipboard"
+            }).then(() => {
+                clipboard.setText(dataUrl);
+            });
         });
     }
 }
