@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import * as utf8 from 'utf8';
-import * as base64 from 'base-64';
 import { RouterExtensions } from "nativescript-angular/router";
 import { ExploracionFonologicaService } from "~/app/shared/exploracion_fonologica/exploracion_fonologica.service";
 import { PacienteService } from "~/app/shared/paciente/paciente.service";
@@ -10,26 +8,11 @@ import { ActivatedRoute } from "@angular/router";
 import { PlanTrabajoService } from "~/app/shared/plan_trabajo/plan_trabajo.service";
 import * as pdfMake from 'pdfmake/build/pdfmake.js';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { PlanTrabajo } from "~/app/shared/plan_trabajo/plan_trabajo";
+import { Style } from "tns-core-modules/ui/page/page";
 
-global['window'] = {
-    'document': {
-        'createElementNS': () => { return {} }
-    }
-};
-global['document'] = {
-    'createElement': (str) => { return {} }
-};
-global['navigator'] = {};
-
-const jsPDF = require('../../jspdf');
 const clipboard = require("../../nativescript-clipboard");
 const dialogs = require("ui/dialogs");
 
-global['btoa'] = (str) => {
-    var bytes = utf8.encode(str);
-    return base64.encode(bytes);
-};
 
 @Component({
     selector: "ns-detalle-reporte",
@@ -127,39 +110,57 @@ export class DetalleDiagnosticoComponent implements OnInit {
                 opacity: 0.5
             },
             content: [
-
-                { text: '\n\n\nCentro de Rehabilitación e Inclusión Social de Veracruz', style: 'logo', alignment: 'center' },
-                { text: 'CRISVER', style: 'logo', alignment: 'center' },
-                { text: 'REPORTE DE DIAGNÓSTICO', style: 'header', alignment: 'center' },
-                { text: '\nDatos generales: ', style: 'subheader', alignment: 'justify' },
-                { text: '\nFecha de reporte: ' + this.exploracionFonologica.fechaExploracionFonlogica, fontSize: '12', alignment: 'justify' },
-                { text: '\nNombre de paciente: ' + this.nombrePaciente, fontSize: '12', alignment: 'justify' },
-                { text: '\nNúmero de expediente: ' + this.exploracionFonologica.paciente.numero_expediente, fontSize: '12', alignment: 'justify' },
-                { text: '\nEdad de paciente: ' + this.edadPaciente, fontSize: '12', alignment: 'justify' },
-                { text: '\nDiagnóstico: ', style: 'subheader', alignment: 'justify' },
-                { text: '\nNivel de trastorno: ' + this.exploracionFonologica.gradoTrastorno, fontSize: '12', alignment: 'justify' },
-                { text: '\nObservaciones: ' + this.exploracionFonologica.observaciones, fontSize: '12', alignment: 'justify' },
-                { text: '\nPlan de trabajo: ', style: 'subheader', alignment: 'justify' },
-                { text: '\nCada cuanto se realiza el plan de trabajo: ' + this.planTrabajotemporalidad, fontSize: '12', alignment: 'justify' },
-                { text: '\nNúmero de bloque: ' + this.planTrabajonumeroBloque, fontSize: '12', alignment: 'justify' },
-                { text: '\nDescripción del plan de trabajo: ', fontSize: '12', alignment: 'justify' },
-                { text: '\n  ' + this.planTrabajoIndicaciones, fontSize: '12', alignment: 'justify' },
-
-
+                { text: '\n\n\n\n\nCENTRO DE REHABILITACIÓN E INCLUSIÓN SOCIAL DEL ESTADO DE VERACRUZ', style: 'logo'},
+                { text: 'REPORTE DE DIAGNÓSTICO', style: 'header'},
+                { text: '\nDatos generales: ', style: 'subheader'},
+                {
+                    style: 'tableExample',
+                    table: {
+                        body: [
+                            [{text: '\nFECHA', style: 'textoNegro'}, { text: '\n' + this.exploracionFonologica.fechaExploracionFonlogica,  style: 'texto'}],
+                            [{text: '\nNOMBRE ', style: 'textoNegro' }, { text: '\n' + this.nombrePaciente, style: 'texto'}],
+                            [{text: '\nEXPEDIENTE ', style: 'textoNegro'}, { text: '\n' + this.exploracionFonologica.paciente.numero_expediente, style: 'texto' }],
+                            [{text: '\nEDAD ', style: 'textoNegro'}, { text: '\n' + this.edadPaciente, style: 'texto'}],
+                        ]
+                    }
+                },
+                { text: '\nDiagnóstico: ', style: 'subheader'},
+                { text: [{text:'\nNivel de trastorno: ', style:'textoNegro'}, this.exploracionFonologica.gradoTrastorno], style: 'texto' },
+                { text: [{text:'\nObservaciones: ', style:'textoNegro'}, this.exploracionFonologica.observaciones], syle:'texto' },
+                { text: '\nPlan de trabajo: ', style: 'subheader'},
+                { text: [{text:'\nCada cuanto se realiza el plan de trabajo: ', style: 'textoNegro'}, this.planTrabajotemporalidad], style: 'texto' },
+                { text: [{text:'\nNúmero de bloque: ', style: 'textoNegro'}, this.planTrabajonumeroBloque], style: 'texto'},
+                { text: '\nDescripción del plan de trabajo: ', style: 'textoNegro' },
+                { text: '\n  ' + this.planTrabajoIndicaciones, style: 'texto'},
             ],
             styles: {
+                tableExample: {
+                    margin: [0, 5, 0, 15]
+                },
                 logo: {
-                    fontSize: 20,
-                    bold: true
+                    fontSize: 15,
+                    bold: true,
+                    alignment:'center'
                 },
 
                 header: {
-                    fontSize: 18,
+                    fontSize: 14,
                     bold: true,
+                    alignment: 'center'
                 },
                 subheader: {
-                    fontSize: 15,
-                    bold: true
+                    fontSize: 14,
+                    bold: true,
+                    alignment: 'justify'
+                },
+                textoNegro:{
+                    fontSize: 12,
+                    bold: true,
+                    alignment:'justify'
+                },
+                texto:{
+                    fontSize: 12,
+                    alignment:"justify"
                 }
             }
         }
