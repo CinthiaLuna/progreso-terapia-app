@@ -7,12 +7,27 @@
     <Label text="{{detalleProcedimiento.procedimiento}}" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>
-<GridLayout class="fondoreporte">
-    <RadListView class="list-group" [items]="listaTerapia" >
-        <ng-template let-item="item">
+<GridLayout class="fondoreporte" rows="25,5,*">
+    <Label row="0" class="title2" text="Seleccione un ejercicio: "></Label>
+    <StackLayout row="1" class="hr"></StackLayout>
+    <ListView [items]="listaTerapia" row="2">
+        <ng-template let-item="item" let-i="index">
             <FlexboxLayout (Tap)="onItemTap(item)">
-                <Label class="title" [text]="item.nombreTerapia"></Label>
+                <Label textWrap="true" class="title" [text]="item.nombreTerapia"></Label>
             </FlexboxLayout>
         </ng-template>
-    </RadListView>
+    </ListView>
 </GridLayout>
+
+<!--
+<RadListView class="list-group" [items]="listaTerapia" >
+    <ng-template let-item="item">
+        <StackLayout (Tap)="onItemTap(item)">
+            <Label textWrap="true" class="title" text="{{ i + 1 }}" ></Label>
+            <Label textWrap="true" class="title" [text]="item.nombreTerapia"></Label>
+            <Label class="hr"></Label>
+        </StackLayout>
+    </ng-template>
+</RadListView>
+
+-->
