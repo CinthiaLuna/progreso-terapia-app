@@ -9,7 +9,7 @@ import { Procedimiento } from "./procedimiento";
 
 @Injectable()
 export class ProcedimientoService {
-    private urlEndPont: string = 'http://192.168.100.72:8080/api/oauth2/procedimiento';
+    private urlEndPont: string = 'http://192.168.0.112:8080/api/oauth2/procedimiento';
     private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
     constructor(private http: HttpClient, private authService: AuthService,  private routerExtensions: RouterExtensions) { }

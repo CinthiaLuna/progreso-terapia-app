@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild, ElementRef } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -6,33 +6,23 @@ import { ExploracionFonologicaService } from "../shared/exploracion_fonologica/e
 import { PacienteService } from "../shared/paciente/paciente.service";
 import { ExploracionFonologica } from "../shared/exploracion_fonologica/exploracion_fonologica";
 import { Paciente } from "../shared/paciente/paciente";
-import { getLocaleNumberFormat } from "@angular/common";
-global['window'] = {
-    'document': {
-        'createElementNS': () => { return {} }
-    }
-};
-global['document'] = {
-    'createElement': (str) => { return {} }
-};
-global['navigator'] = {};
-const base64 = require('../base-64');
-const utf8 = require('../utf8');
-const jsPDF = require('../jspdf')
+import { Page, View } from "tns-core-modules/ui/page";
+import { EventData } from "tns-core-modules/data/observable";
+import { fromData, ImageSource } from "tns-core-modules/image-source";
+import { Image, imageSourceProperty } from "tns-core-modules/ui/image";
+import * as pdfMake from 'pdfmake/build/pdfmake.js';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { PanGestureEventData, GestureStateTypes } from 'tns-core-modules/ui/gestures';
+
 const clipboard = require("../nativescript-clipboard")
 const dialogs = require("ui/dialogs")
-
-global['btoa'] = (str) => {
-    var bytes = utf8.encode(str);
-    return base64.encode(bytes);
-};
-
 
 @Component({
     selector: "ns-progreso-paciente",
     templateUrl: "./progreso-paciente.component.html",
     styleUrls: ["./progreso-paciente.component.css"]
 })
+
 export class ProgresoPacienteComponent {
     paciente: Paciente;
     exploracionesFonologicas: ExploracionFonologica[];
@@ -40,9 +30,11 @@ export class ProgresoPacienteComponent {
     numeroExpediente: string;
     edadPaciente: number;
 
-    constructor( private pacienteService: PacienteService, 
+    constructor(private pacienteService: PacienteService,
         private exploracionFonologicaService: ExploracionFonologicaService,
-        private routerExtensions: RouterExtensions) {}
+        private routerExtensions: RouterExtensions) {
+        pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    }
     ngOnInit(): void {
         this.pacienteService.getPaciente().subscribe(
             result => {
@@ -59,25 +51,40 @@ export class ProgresoPacienteComponent {
                 this.exploracionesFonologicas = result;
             }
         );
-    } 
+
+    }
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
-    }
-    generatePDF() {
+    };
 
-        var doc = new jsPDF('p', 'pt');
-        doc.setFontSize(26);
-        doc.text(40, 40, "My first PDF with NativeScript!");
+    onTap(args: EventData) {
+        console.log("entro");
+        const view = args.object as View;
+        const targetView = view.page.getViewById('layout') as View;
+        const img = view.page.getViewById('img') as Image;
+        const screenShot = this.getImage(targetView);
 
-        var base64 = doc.output('datauristring')
-        
-        dialogs.alert({
-            title: "Progreso paciente",
-            message: "Click en copiar y pegalo en tu navegador",
-            okButtonText: "Copiar ruta"
-        }).then(() => {
-            clipboard.setText(base64)
-        });
+        img.imageSource = screenShot;
+        img.visibility = 'visible';
     }
+    getImage(view: View) {
+        view.android.setDrawingCacheEnabled(true);
+        var bmp = android.graphics.Bitmap.createBitmap(view.android.getDrawingCache());
+        view.android.setDrawingCacheEnabled(false);
+
+        const source = new ImageSource(bmp);
+        return source;
+    }
+    onPan(args: PanGestureEventData) {
+        const view = args.object as View;
+        if (args.state === GestureStateTypes.changed) {
+            view.translateX = args.deltaX;
+            view.translateY = args.deltaY;
+
+        }
+    }
+
+
+
 }

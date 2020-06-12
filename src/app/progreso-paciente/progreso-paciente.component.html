@@ -4,12 +4,12 @@
 	<ActionItem icon="res://boton_burger" android:visibility="collapsed" ios.position="right"
 		(tap)="onDrawerButtonTap()">
 	</ActionItem>
-	<ActionItem tap="onSave" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right" (tap)="generatePDF()"></ActionItem>
+	<ActionItem tap="onSave" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"  (tap)= "onTap($event)" ></ActionItem>
 	<Label text="Progreso paciente" class="titulo"> </Label>
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>
 
-<GridLayout class="fondoreporte">
+<GridLayout class="fondoreporte" id="layout" >
 	<GridLayout  rows="auto,auto,*,auto" style="height: 4000px;">
 		<StackLayout row="0" class="paciente">
 			<Label text="DATOS GENERALES DEL PACIENTE " class="paciente-titulo"></Label>
@@ -23,7 +23,7 @@
 			<Label class="t-text-r" text="1 = Severo (Balbucea) ... 7 = Ideal (Dice oraciones)" ></Label>
 		</StackLayout>
 		<StackLayout row="2">
-		<RadCartesianChart>
+		<RadCartesianChart >
 			<CategoricalAxis tkCartesianVerticalAxis></CategoricalAxis>
 			<LinearAxis  maximum="7" majorStep="1" labelFormat="%.0f" tkCartesianHorizontalAxis></LinearAxis>
 			<LineSeries tkCartesianSeries [items]="this.exploracionesFonologicas" categoryProperty="fechaExploracionFonlogica" valueProperty="nivelNumero"></LineSeries>
@@ -32,6 +32,8 @@
 		<StackLayout row="3" >
 			<Label textWrap="true" class="nota" text="* La información proporcionada es responsabilidad del médico especialista a cargo." ></Label>
 		</StackLayout>
-	</GridLayout>
 
+		
+	</GridLayout>
+	<Image id="img" stretch="aspectFill" visibily="collapsed" (pan)="onPan($event)"></Image>
 </GridLayout>
