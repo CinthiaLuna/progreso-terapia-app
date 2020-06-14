@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -9,6 +9,11 @@ import { PlanTrabajoService } from "~/app/shared/plan_trabajo/plan_trabajo.servi
 import * as pdfMake from 'pdfmake/build/pdfmake.js';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Style } from "tns-core-modules/ui/page/page";
+
+import { Cscreenshot } from 'nativescript-cscreenshot';
+import { ImageSource } from 'tns-core-modules/image-source';
+import { knownFolders, Folder } from 'tns-core-modules/file-system';
+import * as fs from "tns-core-modules/file-system";
 
 const clipboard = require("../../nativescript-clipboard");
 const dialogs = require("ui/dialogs");
@@ -42,6 +47,10 @@ export class DetalleDiagnosticoComponent implements OnInit {
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
     }
 
+    @ViewChild("main", {static: true}) view: ElementRef;
+
+
+
     ngOnInit() {
         this.planTrabajoService.obtenerPlanTrabajoPorExploracionFonologica(this.exploracionFonologica.idExploracionFonologica).subscribe(
             result => {
@@ -52,6 +61,24 @@ export class DetalleDiagnosticoComponent implements OnInit {
                 this.planTrabajonumeroBloque = result.numeroBloque;
             }
         )
+
+        // Init your component properties here.
+        let screen = new Cscreenshot();
+        setTimeout(()=>{
+            screen.take(this.view.nativeElement, (image: ImageSource)=>{
+                const folderDest = fs.path.join(knownFolders.documents().path, "screenshots");
+                const pathDest = fs.path.join(folderDest, "Wow-Auctnr_"+new Date().toUTCString()+".png");
+                if(!fs.File.exists(folderDest)){
+                    fs.Folder.fromPath(folderDest);
+                }
+                console.log(pathDest);
+                const saved: boolean = image.saveToFile(pathDest, "png");
+                if (saved) {
+                    console.log("Image saved successfully!");
+                }
+            });
+        }, 1000);
+
     }
 
     onNavigate() {

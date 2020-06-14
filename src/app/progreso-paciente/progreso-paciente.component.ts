@@ -14,6 +14,13 @@ import * as pdfMake from 'pdfmake/build/pdfmake.js';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { PanGestureEventData, GestureStateTypes } from 'tns-core-modules/ui/gestures';
 
+
+import { Cscreenshot } from 'nativescript-cscreenshot';
+//import { ImageSource } from 'tns-core-modules/image-source';
+import { knownFolders, Folder } from 'tns-core-modules/file-system';
+import * as fs from "tns-core-modules/file-system";
+
+
 const clipboard = require("../nativescript-clipboard")
 const dialogs = require("ui/dialogs")
 
@@ -35,6 +42,9 @@ export class ProgresoPacienteComponent {
         private routerExtensions: RouterExtensions) {
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
     }
+
+    @ViewChild("main", {static: true}) view: ElementRef;
+
     ngOnInit(): void {
         this.pacienteService.getPaciente().subscribe(
             result => {
@@ -58,32 +68,35 @@ export class ProgresoPacienteComponent {
         sideDrawer.showDrawer();
     };
 
-    onTap(args: EventData) {
-        console.log("entro");
-        const view = args.object as View;
-        const targetView = view.page.getViewById('layout') as View;
-        const img = view.page.getViewById('img') as Image;
-        const screenShot = this.getImage(targetView);
+    onTap() {
+        let screen = new Cscreenshot();
+            const permission = require("nativescript-permissions");
+            permission.requestPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE,"");
+            screen.take(this.view.nativeElement, (image: ImageSource)=>{
 
-        img.imageSource = screenShot;
-        img.visibility = 'visible';
-    }
-    getImage(view: View) {
-        view.android.setDrawingCacheEnabled(true);
-        var bmp = android.graphics.Bitmap.createBitmap(view.android.getDrawingCache());
-        view.android.setDrawingCacheEnabled(false);
+                //const folderDest = fs.path.join("/storage/emulated/0/Download");
+                //const pathDest = fs.path.join(folderDest, "Wow-Auctnr_"+new Date().toUTCString()+".png");
 
-        const source = new ImageSource(bmp);
-        return source;
-    }
-    onPan(args: PanGestureEventData) {
-        const view = args.object as View;
-        if (args.state === GestureStateTypes.changed) {
-            view.translateX = args.deltaX;
-            view.translateY = args.deltaY;
+                const folderDest = fs.path.join(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS).getAbsolutePath())
+                const pathDest = fs.path.join(folderDest, "Progreso del paciente"+".png");
 
-        }
+                if(!fs.File.exists(folderDest)){
+                    fs.Folder.fromPath(folderDest);
+                }
+                console.log(pathDest);
+                const saved: boolean = image.saveToFile(pathDest, "png");
+                if (saved) {
+                    dialogs.alert({
+                        title: "Progreso del paciente",
+                        message: "El progreso del paciente ha sido guardado en la carpeta de descargas",
+                        okButtonText: "Ok"
+                    })
+                }
+            });
+
+
     }
+
 
 
 

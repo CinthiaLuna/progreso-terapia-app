@@ -9,7 +9,7 @@
 </ActionBar>
 <GridLayout class="fondo"></GridLayout>
 
-<GridLayout class="fondoreporte" id="layout" >
+<GridLayout class="fondoreporte" id="layout" #main>
 	<GridLayout  rows="auto,auto,*,auto" style="height: 4000px;">
 		<StackLayout row="0" class="paciente">
 			<Label text="DATOS GENERALES DEL PACIENTE " class="paciente-titulo"></Label>
@@ -33,7 +33,7 @@
 			<Label textWrap="true" class="nota" text="* La información proporcionada es responsabilidad del médico especialista a cargo." ></Label>
 		</StackLayout>
 
-		
+
 	</GridLayout>
 	<Image id="img" stretch="aspectFill" visibily="collapsed" (pan)="onPan($event)"></Image>
 </GridLayout>

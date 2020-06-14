@@ -26,7 +26,9 @@
     "jspdf": "^1.5.3",
     "nativescript-angular": "~8.21.0",
     "nativescript-clipboard": "^1.2.0",
+    "nativescript-cscreenshot": "^1.0.2",
     "nativescript-localstorage": "^2.0.1",
+    "nativescript-permissions": "^1.3.9",
     "nativescript-ui-calendar": "^6.1.0",
     "nativescript-ui-chart": "^7.1.1",
     "nativescript-ui-gauge": "^6.0.0",
@@ -45,6 +47,7 @@
     "@angular/compiler-cli": "~8.2.0",
     "@ngtools/webpack": "^9.1.0",
     "nativescript-dev-webpack": "~1.5.0",
+    "tns-platform-declarations": "^6.5.5",
     "typescript": "~3.5.3"
   },
   "gitHead": "d8bdf0799a219051f28f8abd7c258d2bf2fce6e1",
