@@ -6,19 +6,12 @@ import { ExploracionFonologicaService } from "../shared/exploracion_fonologica/e
 import { PacienteService } from "../shared/paciente/paciente.service";
 import { ExploracionFonologica } from "../shared/exploracion_fonologica/exploracion_fonologica";
 import { Paciente } from "../shared/paciente/paciente";
-import { Page, View } from "tns-core-modules/ui/page";
-import { EventData } from "tns-core-modules/data/observable";
 import { fromData, ImageSource } from "tns-core-modules/image-source";
-import { Image, imageSourceProperty } from "tns-core-modules/ui/image";
-import * as pdfMake from 'pdfmake/build/pdfmake.js';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { PanGestureEventData, GestureStateTypes } from 'tns-core-modules/ui/gestures';
-
-
 import { Cscreenshot } from 'nativescript-cscreenshot';
 //import { ImageSource } from 'tns-core-modules/image-source';
-import { knownFolders, Folder } from 'tns-core-modules/file-system';
 import * as fs from "tns-core-modules/file-system";
+
+
 
 
 const clipboard = require("../nativescript-clipboard")
@@ -40,7 +33,6 @@ export class ProgresoPacienteComponent {
     constructor(private pacienteService: PacienteService,
         private exploracionFonologicaService: ExploracionFonologicaService,
         private routerExtensions: RouterExtensions) {
-        pdfMake.vfs = pdfFonts.pdfMake.vfs;
     }
 
     @ViewChild("main", {static: true}) view: ElementRef;

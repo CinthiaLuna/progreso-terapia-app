@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "791391656445",
+    "firebase_url": "https://proyectocrisver.firebaseio.com",
+    "project_id": "proyectocrisver",
+    "storage_bucket": "proyectocrisver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791391656445:android:443f4a8566d767dc76e194",
+        "android_client_info": {
+          "package_name": "org.nativescript.progresoterapiaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791391656445-tr32gcb7c746g8dium33ia3tbpruql0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBzEh4HIuTsRnUnJgM_N5UNpMV7kwwUbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791391656445-tr32gcb7c746g8dium33ia3tbpruql0e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

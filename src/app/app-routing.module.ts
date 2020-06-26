@@ -10,7 +10,6 @@ const routes: Routes = [
     { path: "reporte-citas", loadChildren: () => import("~/app/reporte-citas/reporte-citas.module").then((m) => m.ReporteCitasModule) },
     { path: "progreso-paciente", loadChildren: () => import("~/app/progreso-paciente/progreso-paciente.module").then((m) => m.ProgresoPacienteModule) },
     { path: "terapias", loadChildren: () => import("~/app/terapias/terapias.module").then((m) => m.TerapiasModule) },
-    { path: "notificaciones", loadChildren: () => import("~/app/notificaciones/notificaciones.module").then((m) => m.NotificacionesModule) },
 
 ];
 

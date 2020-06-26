@@ -7,7 +7,9 @@ import * as app from "tns-core-modules/application";
 import { AuthService } from "./shared/usuarioAppMovil/auth.service";
 import { Paciente } from "./shared/paciente/paciente";
 import { PacienteService } from "./shared/paciente/paciente.service";
+import * as firebase from 'nativescript-plugin-firebase';
 import { UsuarioAppMovil } from "./shared/usuarioAppMovil/usuarioAppMovil";
+import { Message } from "nativescript-plugin-firebase";
 
 @Component({
     selector: "ns-app",
@@ -39,6 +41,19 @@ export class AppComponent implements OnInit {
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
+
+
+        firebase.init({
+            onMessageReceivedCallback: (message: Message) => {
+                console.log(`Title: ${message.title}`);
+                console.log(`Body: ${message.body}`);
+            },
+            onPushTokenReceivedCallback: function(token) {
+                console.log("Firebase push token: " + token);
+            }
+        })
+
+
     }
 
 
