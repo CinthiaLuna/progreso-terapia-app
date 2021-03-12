@@ -23,7 +23,7 @@
     "@nativescript/theme": "~2.3.0",
     "@types/jspdf": "^1.3.3",
     "base-64": "^0.1.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "nativescript-angular": "~8.21.0",
     "nativescript-clipboard": "^1.2.0",
     "nativescript-cscreenshot": "^1.0.2",
