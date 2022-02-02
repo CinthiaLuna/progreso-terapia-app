@@ -9,7 +9,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 @Injectable()
 export class ExploracionFonologicaService {
-    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/exploracion_fonologica/';
+    private urlEndPoint: string = 'http://192.168.0.106:8080/api/oauth2/exploracion_fonologica/';
     private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient, private authService: AuthService, private routerExtensions: RouterExtensions) { }
 
@@ -32,7 +32,7 @@ export class ExploracionFonologicaService {
             })
         );
     }
-    
+
     obtenerExploracionFonologicaAsc(): Observable<ExploracionFonologica[]> {
         return this.http.get(`${this.urlEndPoint}pacienteAsc`, { headers: this.agregarAuthorizationHeaders() }).pipe(
             map(response => response as ExploracionFonologica[]),
@@ -51,7 +51,7 @@ export class ExploracionFonologicaService {
         if (error.estatus == 401 || error.estatus == 403){
             if (this.authService.isAuthenticated()) {
                 this.authService.logout();
-                
+
             }
             this.routerExtensions.navigate(['/login'])
             return true;

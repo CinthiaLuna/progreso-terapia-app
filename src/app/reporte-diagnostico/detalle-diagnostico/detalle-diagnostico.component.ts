@@ -12,7 +12,7 @@ import { Style } from "tns-core-modules/ui/page/page";
 
 
 
-const clipboard = require("../../nativescript-clipboard");
+const clipboard = require("nativescript-clipboard");
 const dialogs = require("ui/dialogs");
 
 

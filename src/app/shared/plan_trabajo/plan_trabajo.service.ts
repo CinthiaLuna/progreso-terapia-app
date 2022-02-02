@@ -9,7 +9,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 @Injectable()
 export class PlanTrabajoService {
-    private urlEndPont: string = 'http://192.168.0.112:8080/api/oauth2/plan_trabajo/'
+    private urlEndPont: string = 'http://192.168.0.106:8080/api/oauth2/plan_trabajo/'
     private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
     constructor(private http: HttpClient, private authService: AuthService,  private routerExtensions: RouterExtensions) { }
@@ -51,7 +51,7 @@ export class PlanTrabajoService {
         if (error.estatus == 401 || error.estatus == 403){
             if (this.authService.isAuthenticated()) {
                 this.authService.logout();
-                
+
             }
             this.routerExtensions.navigate(['/login'])
             return true;

@@ -14,7 +14,7 @@ import * as fs from "tns-core-modules/file-system";
 
 
 
-const clipboard = require("../nativescript-clipboard")
+const clipboard = require("nativescript-clipboard")
 const dialogs = require("ui/dialogs")
 
 @Component({

@@ -9,7 +9,7 @@ import { AuthService } from "../usuarioAppMovil/auth.service";
 
 @Injectable()
 export class PacienteService {
-    private urlEndPoint: string = 'http://192.168.0.112:8080/api/oauth2/paciente';
+    private urlEndPoint: string = 'http://192.168.0.106:8080/api/oauth2/paciente';
 
     private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     constructor(private http: HttpClient, private routerExtensions: RouterExtensions, private authService: AuthService) { }
@@ -41,7 +41,7 @@ export class PacienteService {
         if (error.estatus == 401 || error.estatus == 403){
             if (this.authService.isAuthenticated()) {
                 this.authService.logout();
-                
+
             }
             this.routerExtensions.navigate(['/login'])
             return true;
